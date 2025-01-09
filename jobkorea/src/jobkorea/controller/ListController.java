@@ -20,7 +20,7 @@ public class ListController {
 	
 	// 2-1 전체 공고리스트 컨트롤러 메소드
 	public ArrayList<PostDto> PfindAll(){
-		ArrayList<PostDto> result = PostD
+		
 	} // f end
 	
 	// 2-2 개별 공고리스트 컨트롤러 메소드
