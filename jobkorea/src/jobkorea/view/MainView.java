@@ -56,8 +56,8 @@ public class MainView {
 	    // 컨트롤러에게 전달하고 응답 받기
 	    boolean result = MainController.getinstance().mLogin(memberDto);
 	    // 응답에 따른 처리
-	    if( result ) {System.out.println("로그인 성공"); }
-	    else { System.out.println("회원정보가 없습니더."); }
+	    if( result ) {System.out.println("[로그인 성공]"); }
+	    else { System.out.println("[회원정보가 없습니다.]"); }
 	}
 	
 	// [3] 회원 로그아웃 메소드
@@ -81,8 +81,12 @@ public class MainView {
 	    // 컨트롤러에게 전달하고 응답 받기
 	    boolean result = MainController.getinstance().eLogin(enterpriseDto);
 	    // 응답에 따른 처리
-	    if( result ) {System.out.println("로그인 성공"); }
-	    else { System.out.println("회원정보가 없습니더."); }
+	    if( result ) {
+	    	System.out.println("[로그인 성공]");
+	    	// EnterpriscView 메인메뉴 메소드 호출
+//	    	EnterpriseView.getinstance().post();
+	    	}
+	    else { System.out.println("[회원정보가 없습니다.]"); }
 	}
 	   
 	// [3] 기업 로그아웃 메소드

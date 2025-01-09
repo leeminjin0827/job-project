@@ -11,8 +11,8 @@ public class EnterpriseView {
 	// - 싱글톤
 	Scanner scan = new Scanner( System.in );
 	
-	// 0. 메인 스타트
-	public void post() {
+	// 0. (로그인 했을때) 메인 메뉴 메소드 // 로그아웃시 탈출
+	public void Pindex() {
 		while( true ) {
 			System.out.println("1.공고등록 2.공고수정 3.공고삭제 4.지원현황 5.로그아웃");
 			int choose = scan.nextInt();
