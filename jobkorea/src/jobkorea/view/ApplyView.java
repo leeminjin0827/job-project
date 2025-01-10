@@ -77,12 +77,13 @@ public class ApplyView {
 	public void applyR(int loginMno) {
 		ArrayList<HashMap<String, String>> aList = ApplyController.getInstance().applyR(loginMno);
 		
-		System.out.println("번호 \t 카테고리명");
 		System.out.println();
+		System.out.println("지원번호 \t \t 공고명 \t \t 공고종료일 \t \t 합격여부 ");
 		for(int i = 0; i < aList.size(); i++) {
 			HashMap<String, String> aDto = aList.get(i);
-			System.out.println(aDto);
-			System.out.println();
+			System.out.println("지원번호 : "+ aDto.get("지원번호") +" \t 공고명 : " + aDto.get("공고명") 
+								+ "공고종료일 : " + aDto.get("rh") + "\t 합격여부" + aDto.get("합격여부"));
+		
 		}
 	}
 	
