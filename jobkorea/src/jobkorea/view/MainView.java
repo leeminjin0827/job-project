@@ -84,7 +84,7 @@ public class MainView {
 	    if( result ) {
 	    	System.out.println("[로그인 성공]");
 	    	// EnterpriscView 메인메뉴 메소드 호출
-//	    	EnterpriseView.getinstance().post();
+	    	EnterpriseView.getInstance().pIndex();
 	    	}
 	    else { System.out.println("[회원정보가 없습니다.]"); }
 	}

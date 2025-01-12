@@ -24,4 +24,11 @@ public class EnterpriseDao {
 	} // f end
 	public static EnterpriseDao getinstance() { return instance; }
 	// - 싱글톤
-}
+	
+	
+	
+	
+	
+	
+	
+} // c end
