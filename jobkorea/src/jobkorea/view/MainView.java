@@ -70,9 +70,7 @@ public class MainView {
 				if(choose4 == 1) {
 					bestList();
 				}else if(choose4 == 2) {
-					System.out.print(">> 후기를 볼 기업명 : ");
-					String ename = scan.next();
-					reviewList(ename);
+					reviewList();
 				}else if (choose4 ==3) {
 					
 				}
@@ -97,11 +95,11 @@ public class MainView {
 	    int result = MainController.getInstance().mLogin(memberDto);
 	    // 응답에 따른 처리
 	    if( result > 0 ) {
-	    	System.out.println("[로그인 성공]"); 
+	    	System.out.println(">> 로그인 성공"); 
 	    	return result;
 	    }
 	    else {
-	    	System.out.println("[회원정보가 없습니다.]"); 
+	    	System.out.println(">> 회원정보가 없습니다."); 
 	    }
 	    return 0;
 	}
@@ -134,11 +132,11 @@ public class MainView {
  	    boolean result = MainController.getInstance().eLogin(enterpriseDto);
  	    // 응답에 따른 처리
  	    if( result ) {
- 	    	System.out.println("[로그인 성공]");
+ 	    	System.out.println(">> 로그인 성공");
  	    	// EnterpriscView 메인메뉴 메소드 호출
  	    	//EnterpriseView.getinstance().post();
  	    	}
- 	    else { System.out.println("[회원정보가 없습니다.]"); }
+ 	    else { System.out.println(">> 회원정보가 없습니다."); }
  	}
  	
     // [3] 기업 로그아웃 메소드
@@ -157,23 +155,27 @@ public class MainView {
     public void bestList() {
     	ArrayList<HashMap<String , String>> bList = MainController.getInstance().bestList();
     	
-    	System.out.println("======= 우수기업리스트 =======");
+    	System.out.println("========= 우수기업리스트 =========");
     	System.out.println();
     	for(int i = 0; i < bList.size() ; i++) {
     		HashMap<String, String> bDto = bList.get(i);
-    		System.out.println(bDto);
+    		System.out.println("기업명 : " + bDto.get("기업명") + "\t 별점 : " + bDto.get("별점"));
     	}
+    	System.out.println();
 	}
     // [2] 후기 R
-    public void reviewList(String ename) {
+    public void reviewList() {
+    	
+    	System.out.print(">> 후기를 볼 기업명 : ");
+		String ename = scan.next();
     	ArrayList<HashMap<String , String>> rList = MainController.getInstance().reviewList(ename);
     	
-    	System.out.print(">> 기업명 : ");
     	System.out.println();
     	for(int i = 0; i < rList.size() ; i++) {
     		HashMap<String, String> rDto = rList.get(i);
-    		System.out.println(rDto);
+    		System.out.println("기업명 : " + rDto.get("기업명") + "\t 후기 : " + rDto.get("후기") + "\t 별점 : " + rDto.get("별점"));
     	}
+    	System.out.println();
 	}
 }
 
