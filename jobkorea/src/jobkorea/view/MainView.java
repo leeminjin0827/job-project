@@ -39,6 +39,10 @@ public class MainView {
 	      } // if end 
 		} // w end
 	} // v end
+	
+	
+	
+	
 	// [1] 회원 회원가입 메소드
 	public void mSignUp() {
 	         
@@ -64,12 +68,44 @@ public class MainView {
 	public void mLogout() {
 	         
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	   
-	// [1] 기업 회원가입 메소드
+	// [1] 기업 회원가입 메소드 / 타입 boolean
 	public void eSignUp() {
-	         
-	}
+		System.out.println("===== 기업 회원가입 =====");
+		System.out.print("아이디 : ");		String eid = scan.next();
+		System.out.print("비밀번호 : ");	String epwd = scan.next();
+		System.out.print("기업명 : ");		String ename = scan.next();
+		System.out.print("주소 : ");		String eaddr = scan.next();
+		
+		EnterpriseDto enterpriseDto = new EnterpriseDto();
+		enterpriseDto.setEid(eid);
+		enterpriseDto.setEpwd(epwd);
+		enterpriseDto.setEname(ename);
+		enterpriseDto.setEaddr(eaddr);
+			   
+		boolean result = MainController.getinstance().eSignUp(enterpriseDto);
+		if(result) {
+		System.out.println("[회원가입 성공]");
+		}else {
+		System.out.println("[회원가입 실패]");
+      } 
+   }
 	   
+	
+	
+	
 	// [2] 기업 로그인 메소드
 	public void eLogin() {
 		System.out.print("아이디 : ");	String eid = scan.next();
@@ -89,6 +125,9 @@ public class MainView {
 	    else { System.out.println("[회원정보가 없습니다.]"); }
 	}
 	   
+	
+	
+	
 	// [3] 기업 로그아웃 메소드
 	public void eLogout() {
 	         

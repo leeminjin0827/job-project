@@ -28,6 +28,17 @@ public class MainController {
 		} // if end
 	} // f end
 	
+	
+	
+	
+	// [1] 기업 회원가입 메소드 / 타입 boolean
+	public boolean eSignUp(EnterpriseDto enterpriseDto) {
+	      boolean result = MainDao.getinstance().eSignUp(enterpriseDto);
+	      return result;
+	}
+	
+	
+	
 	// 2. 기업 회원 로그인 컨트롤러 메소드
 	public boolean eLogin( EnterpriseDto enterpriseDto ) { // memberDto 를 매개변수로 가져옴
 		int result = MainDao.getinstance().eLogin( enterpriseDto ); // Dao에서 정보가 있으면 회원번호를 반환 없으면 0반환
