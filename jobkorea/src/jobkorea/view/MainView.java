@@ -70,15 +70,7 @@ public class MainView {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	   
 	// [1] 기업 회원가입 메소드 / 타입 boolean
