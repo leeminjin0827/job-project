@@ -79,10 +79,44 @@ public class MainView {
 	}
 	// 회원가입 로그인 결과를 boolean 으로 반환받아 변수에 반환값을 저장 -> 성공 : 다음 view 연동 실패 : break;
 
-    // [1] 회원 회원가입 메소드
-    public void mSignUp() {
-       
-    }
+	 // [1] 일반 회원가입 메소드 / 타입 boolean
+	 public void mSignUp() {
+		  System.out.println("===== 일반 회원가입 =====");
+	      System.out.print("아이디 : ");		String mid = scan.next();
+	      System.out.print("비밀번호 : ");		String mpwd = scan.next();
+	      System.out.print("이름 : ");		String mname = scan.next();
+	      System.out.print("성별(0.남/1.여) : ");		int gender = scan.nextInt();
+	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
+	      
+	      if(gender == 1) { // 
+	    	  mgender = true; // 1 = 여성(true)
+	    	  // System.out.println(mgender);
+	      }else if(gender == 0 ) {
+	    	  mgender = false;
+	    	  // System.out.println(mgender);
+	      }
+	      
+	      System.out.print("생년월일 : ");		String mdate = scan.next();
+	      System.out.print("주소 : ");		String maddr = scan.next();
+	      
+	      MemberDto memberDto = new MemberDto();
+	      memberDto.setMid(mid);
+	      memberDto.setMpwd(mpwd);
+	      memberDto.setMname(mname);
+	      memberDto.setMgender(mgender);
+	      memberDto.setMdate(mdate);
+	      memberDto.setMaddr(maddr);
+	     	      
+	      boolean result = MainController.getInstance().mSignUp(memberDto);
+	      if(result) {
+	    	  System.out.println("[회원가입 성공]");
+	      }else {
+	    	  System.out.println("[회원가입 실패]");
+	      }  
+
+	   }
+	 
+	// [2] 회원 로그인 메소드 
     public int mLogin() {
 		// 입력
 		System.out.print("아이디 : ");	String mid = scan.next();
@@ -116,10 +150,26 @@ public class MainView {
     
     
     
-    // [1] 기업 회원가입 메소드
     public void eSignUp() {
-       
-    }
+		System.out.println("===== 기업 회원가입 =====");
+		System.out.print("아이디 : ");		String eid = scan.next();
+		System.out.print("비밀번호 : ");	String epwd = scan.next();
+		System.out.print("기업명 : ");		String ename = scan.next();
+		System.out.print("주소 : ");		String eaddr = scan.next();
+		
+		EnterpriseDto enterpriseDto = new EnterpriseDto();
+		enterpriseDto.setEid(eid);
+		enterpriseDto.setEpwd(epwd);
+		enterpriseDto.setEname(ename);
+		enterpriseDto.setEaddr(eaddr);
+			   
+		boolean result = MainController.getInstance().eSignUp(enterpriseDto);
+		if(result) {
+		System.out.println("[회원가입 성공]");
+		}else {
+		System.out.println("[회원가입 실패]");
+      } 
+   }
     // [2] 기업 로그인 메소드
  	public void eLogin() {
  		System.out.print("아이디 : ");	String eid = scan.next();
@@ -163,6 +213,7 @@ public class MainView {
     	}
     	System.out.println();
 	}
+    
     // [2] 후기 R
     public void reviewList() {
     	
@@ -170,12 +221,20 @@ public class MainView {
 		String ename = scan.next();
     	ArrayList<HashMap<String , String>> rList = MainController.getInstance().reviewList(ename);
     	
+    	boolean state = false;
     	System.out.println();
     	for(int i = 0; i < rList.size() ; i++) {
     		HashMap<String, String> rDto = rList.get(i);
-    		System.out.println("기업명 : " + rDto.get("기업명") + "\t 후기 : " + rDto.get("후기") + "\t 별점 : " + rDto.get("별점"));
+    		System.out.println("기업명 : " +rDto.get("기업명") + "\t 후기 : " + rDto.get("후기") + "\t 별점 : " + rDto.get("별점"));
+    		state = true;
+    	}
+    	
+    	if(state == false) {
+    		System.out.println(">> 해당 기업의 후기가 존재하지 않습니다.");
     	}
     	System.out.println();
+    	
 	}
+    
 }
 
