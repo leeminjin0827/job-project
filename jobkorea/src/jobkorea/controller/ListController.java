@@ -16,23 +16,18 @@ public class ListController {
 	
 	// 샘플로 제작
 	
-	// 1-1 전체 카테고리 컨트롤러 메소드
+	// 카테고리리스트 컨트롤러 메소드
 	public ArrayList<HashMap<String , String>> cList() {
-		System.out.println("[전체 카테고리 리스트]");
+		System.out.println("[카테고리 리스트]");
 		ArrayList<HashMap<String , String>> cList = ListDao.getInstance().cList();
 		
 		return cList;
 	} // f end
 	
-	// 1-2 개별 카테고리 컨트롤러 메소드
-	public void eCategory() {
-		
-	} //f end
-	
-	// 2-1 전체 공고리스트 컨트롤러 메소드
-	public ArrayList<HashMap<String , String>> pList() {
-		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList();
-		
+	// 공고리스트 출력
+	public ArrayList<HashMap<String , String>> pList( int loginEno ) {
+		System.out.println("[공고 리스트]");
+		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList( loginEno );
 		return pList;
 	} // f end
 	

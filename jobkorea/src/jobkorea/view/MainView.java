@@ -11,7 +11,7 @@ public class MainView {
 	// + 싱글톤
 	private static MainView instance = new MainView();
 	private MainView() {}
-	public static MainView getinstance() { return instance; }
+	public static MainView getInstance() { return instance; }
 	// - 싱글톤
 	Scanner scan = new Scanner( System.in );
 	
@@ -34,7 +34,12 @@ public class MainView {
 	    	  System.out.println("1.기업 회원가입 2.기업 로그인 3.로그아웃");
 	    	  int choose1 = scan.nextInt();
 	    	  if( choose1 == 1 ) { eSignUp(); }
-	    	  else if( choose1 == 2 ) { eLogin(); }
+	    	  else if( choose1 == 2 ) { 
+	    		  int loginEno = eLogin();
+	    		  if( 0 < loginEno ) { // loginEno(기업회원번호)가 0보다 크면
+	    			  PostView.getInstance().pIndex(loginEno); // 공고 관련페이지로 이동
+	    		  } // if end
+	    	  } // else if end
 	    	  else if( choose1 == 3 ) { eLogout(); }
 	      } // if end 
 		} // w end
@@ -54,7 +59,7 @@ public class MainView {
 	    memberDto.setMid(mid);
 	    memberDto.setMpwd(mpwd);
 	    // 컨트롤러에게 전달하고 응답 받기
-	    boolean result = MainController.getinstance().mLogin(memberDto);
+	    boolean result = MainController.getInstance().mLogin(memberDto);
 	    // 응답에 따른 처리
 	    if( result ) {System.out.println("[로그인 성공]"); }
 	    else { System.out.println("[회원정보가 없습니다.]"); }
@@ -71,7 +76,7 @@ public class MainView {
 	}
 	   
 	// [2] 기업 로그인 메소드
-	public void eLogin() {
+	public int eLogin() {
 		System.out.print("아이디 : ");	String eid = scan.next();
 		System.out.print("비밀번호 : ");	String epwd = scan.next();
 		// 객체화
@@ -79,15 +84,14 @@ public class MainView {
 	    enterpriseDto.setEid(eid);
 	    enterpriseDto.setEpwd(epwd);
 	    // 컨트롤러에게 전달하고 응답 받기
-	    boolean result = MainController.getinstance().eLogin(enterpriseDto);
+	    int result = MainController.getInstance().eLogin(enterpriseDto);
 	    // 응답에 따른 처리
-	    if( result ) {
+	    if( 0 < result ) {
 	    	System.out.println("[로그인 성공]");
-	    	// EnterpriscView 메인메뉴 메소드 호출
-	    	EnterpriseView.getInstance().pIndex();
 	    	}
 	    else { System.out.println("[회원정보가 없습니다.]"); }
-	}
+	    return result;
+	} // f end
 	   
 	// [3] 기업 로그아웃 메소드
 	public void eLogout() {

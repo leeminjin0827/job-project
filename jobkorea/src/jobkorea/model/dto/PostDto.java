@@ -31,6 +31,18 @@ public class PostDto {
 		this.cno = cno;
 		this.eno = eno;
 	}
+	
+	// 공고등록에 적합한 생성자
+	public PostDto(int cno , String ptitle, String pcontent, String phistory, String pcount, String psalary, String pend) {
+		super();
+		this.cno = cno;
+		this.ptitle = ptitle;
+		this.pcontent = pcontent;
+		this.phistory = phistory;
+		this.pcount = pcount;
+		this.psalary = psalary;
+		this.pend = pend;
+	}
 
 
 	// 메소드

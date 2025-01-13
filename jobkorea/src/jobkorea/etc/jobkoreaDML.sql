@@ -85,7 +85,7 @@ create table apply(
    ano int unsigned auto_increment ,
     pno int unsigned ,
     mno int unsigned ,
-    apass boolean not null ,
+    apass boolean not null default false ,
     constraint primary key ( ano ) ,
     constraint foreign key ( pno ) references post(pno) ,
     constraint foreign key ( mno ) references member(mno)
