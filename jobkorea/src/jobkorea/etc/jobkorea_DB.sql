@@ -134,11 +134,11 @@ select * from category order by cno asc;
 -- 입력값에 해당되는 공고리스트 sample --
 select p.pno , p.ptitle , p.pcontent ,p.phistory , p.pcount , p.psalary , p.pstart , p.pend , c.cname
 	from post p join category c on p.cno = c.cno where p.cno = '8';
--- 로그인된 회원번호로 공고 지원 --
+-- 로그인된 회원번호로 공고 지원 sample --
 insert into apply(pno, mno) values (1,1);
--- 지원 삭제 --
+-- 지원 삭제 sample --
 delete from apply where ano = 1;
--- 지원 수정 --
+-- 지원 수정 sample --
 update member set mpwd = '얍' , mname = '얍', mgender = true , mdate = '얍' , maddr = '얍' where mno = 1;
 select * from member;
 
