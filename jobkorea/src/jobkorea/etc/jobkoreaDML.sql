@@ -114,3 +114,22 @@ insert into review( rrating , rcontent , eno , mno ) values ( '4' , '돈을 많�
 insert into review( rrating , rcontent , eno , mno ) values ( '2' , '가지마세요.' , '1' , '2' );
 insert into review( rrating , rcontent , eno , mno ) values ( '2' , '비추합니다.' , '1' , '3' );
 insert into review( rrating , rcontent , eno , mno ) values ( '5' , '좋아요.' , '2' , '3' );
+
+
+insert into review( rcontent, rrating, mno) values('a', 1, 1);
+select * from review;
+
+
+select a.ano, p.ptitle, e.ename from apply as a join post as p on a.pno = p.pno join member as m on a.mno = m.mno join enterprise as e on a.eno = e.eno where a.apass = true and a.mno = 3;
+
+
+select r.rno, e.ename, r.rrating, r.rcontent, r.rdate from review as r join enterprise as e on r.eno = e.eno join member as m on r.mno = m.mno where r.mno = 3;
+
+
+
+
+
+
+
+
+

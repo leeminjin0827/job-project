@@ -6,7 +6,7 @@ public class AppStart {
 	
 	public static void main(String[] args) {
 		
-		MainView.getinstance().run();
+		MainView.getInstance().run();
 		  
 	} // m end
 } // c end

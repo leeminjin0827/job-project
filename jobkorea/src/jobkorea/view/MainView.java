@@ -5,13 +5,14 @@ import java.util.Scanner;
 import jobkorea.controller.MainController;
 //import jobkorea.Controller.MainController;
 import jobkorea.model.dto.EnterpriseDto;
+import jobkorea.model.dto.IndexView;
 import jobkorea.model.dto.MemberDto;
 
 public class MainView {
 	// + 싱글톤
 	private static MainView instance = new MainView();
 	private MainView() {}
-	public static MainView getinstance() { return instance; }
+	public static MainView getInstance() { return instance; }
 	// - 싱글톤
 	Scanner scan = new Scanner( System.in );
 	
@@ -27,7 +28,13 @@ public class MainView {
 	    	  System.out.println("1.일반 회원가입 2.일반 로그인 3.로그아웃");
 	    	  int choose1 = scan.nextInt();
 	    	  if( choose1 == 1 ) { mSignUp(); }
-	    	  else if( choose1 == 2 ) { mLogin(); }
+	    	  else if( choose1 == 2 ) { 
+	    		  int loginMno = mLogin();	
+					if(loginMno > 0) { // 성공 시 지원 / 후기 View 연동
+						IndexView.getInstance().index(loginMno);
+					}
+				}
+
 	    	  else if( choose1 == 3 ) { mLogout(); }
 	      } // if end
 	      else if( choose == 2 ) {
@@ -49,7 +56,7 @@ public class MainView {
 	}
 	   
 	// [2] 회원 로그인 메소드
-	public void mLogin() {
+	public int mLogin() {
 		// 입력
 		System.out.print("아이디 : ");	String mid = scan.next();
 		System.out.print("비밀번호 : ");	String mpwd = scan.next();
@@ -58,10 +65,14 @@ public class MainView {
 	    memberDto.setMid(mid);
 	    memberDto.setMpwd(mpwd);
 	    // 컨트롤러에게 전달하고 응답 받기
-	    boolean result = MainController.getinstance().mLogin(memberDto);
+	    int result = MainController.getinstance().mLogin(memberDto);
 	    // 응답에 따른 처리
-	    if( result ) {System.out.println("[로그인 성공]"); }
+	    if( 0 < result ) {System.out.println("[로그인 성공]");
+	    	System.out.println(result);
+	    	return result;
+	    }
 	    else { System.out.println("[회원정보가 없습니다.]"); }
+	    return 0;
 	}
 	
 	// [3] 회원 로그아웃 메소드
