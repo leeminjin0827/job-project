@@ -85,7 +85,7 @@ public class ApplyView {
 		for(int i = 0; i < aList.size(); i++) {
 			HashMap<String, String> aDto = aList.get(i);
 			System.out.println("지원번호 : "+ aDto.get("지원번호") +" \t 공고명 : " + aDto.get("공고명") 
-								+ " 공고종료일 : " + aDto.get("공고종료일") + " 합격여부" + aDto.get("합격여부"));
+								+ " 공고종료일 : " + aDto.get("공고종료일") + " 합격여부 : " + aDto.get("합격여부"));
 		}
 		System.out.println();
 	}
@@ -135,7 +135,7 @@ public class ApplyView {
 	}
 	
 	//// + 이미 지원한 공고 중복 지원 불가 기능
-	//// + 내정보보기
+	//// + 내정보보기 기능 - 회원가입메소드 취합 시 연동하기
 	//// + 돌아가기 기능
 	
 	
