@@ -26,6 +26,7 @@ public class ListController {
 	
 	// 공고리스트 출력
 	public ArrayList<HashMap<String , String>> pList( int loginEno ) {
+		System.out.println(loginEno);
 		System.out.println("[공고 리스트]");
 		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList( loginEno );
 		return pList;

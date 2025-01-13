@@ -53,6 +53,7 @@ public class ListDao {
 	
 	// [2] 공고 리스트 출력
 	public ArrayList<HashMap<String, String>> pList( int loginEno ) { // 로그인된 기업번호 매개변수로 받아주세요
+		System.out.println(loginEno);
 		ArrayList<HashMap<String, String>> pList = new ArrayList<HashMap<String,String>>();
 		try {
 			String sql = "select p.pno , p.ptitle, p.pcontent , p.phistory, p.pcount , p.psalary, p.pstart, p.pend , c.cname , e.ename "

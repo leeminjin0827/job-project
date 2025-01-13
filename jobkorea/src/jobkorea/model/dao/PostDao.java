@@ -32,7 +32,7 @@ public class PostDao {
 	// - 싱글톤
 	
 	// 공고등록 SQL 처리 메소드
-	public boolean pRegister( PostDto postDto ) {
+	public boolean pRegister( PostDto postDto ) { // join / select
 		try {
 			// SQL 작성
 			String sql = "insert into post( cno , ptitle , pcontent , phistory , pcount , psalary , pend )"

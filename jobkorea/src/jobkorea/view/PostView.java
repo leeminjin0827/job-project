@@ -27,7 +27,8 @@ public class PostView {
 			if( choose == 1 ) { 
 				ListView.getInstance().cList(); // 카테고리 리스트 출력
 				pRegister(); }
-			else if( choose == 2 ) { 
+			else if( choose == 2 ) {
+				System.out.println(loginEno);
 				ListView.getInstance().pList( loginEno ); // 공고리스트 출력하는 페이지
 				pUpdate(); }
 			else if( choose == 3 ) { }

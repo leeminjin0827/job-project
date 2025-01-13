@@ -28,6 +28,7 @@ public class ListView {
 		
 	// [2] 공고 리스트 출력
 		public void pList( int loginEno ) {	
+			System.out.println(loginEno);
 			ArrayList<HashMap<String , String>> pList = ListController.getInstance().pList( loginEno );
 			// 로그인된 기업번호 매개변수로 controller , dao 에 전달해 주세용. -> 로그인된 기업 공고만 나와야되니까!
 			System.out.println();
