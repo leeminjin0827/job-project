@@ -21,12 +21,14 @@ public class ListView {
 		System.out.println("번호 \t 카테고리명");
 		System.out.println();
 		for(int i = 0; i < cList.size(); i++) {
-			HashMap<String, String> aDto = cList.get(i);
-			System.out.println(aDto);
+			HashMap<String, String> cDto = cList.get(i);
+			System.out.println("카테고리번호 : " + cDto.get("번호") + "\t 카테고리명 : " + cDto.get("카테고리명"));
 		}
+		System.out.println();
 	}
 	// [2] 공고 리스트 출력
 	public void pList() {
 		ArrayList<HashMap<String , String>> pList = ListController.getInstance().pList();
 	}
+	
 }
