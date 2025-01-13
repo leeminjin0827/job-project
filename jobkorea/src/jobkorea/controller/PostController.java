@@ -12,8 +12,8 @@ public class PostController {
 	// - 싱글톤
 	
 	// 공고등록 컨트롤러 메소드
-	public boolean pRegister( PostDto postDto ) {
-		boolean result = PostDao.getInstance().pRegister( postDto );
+	public boolean pRegister( PostDto postDto , int loginEno ) {
+		boolean result = PostDao.getInstance().pRegister( postDto , loginEno );
 		return result;
 	} // f end
 	

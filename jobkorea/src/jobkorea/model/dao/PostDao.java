@@ -32,13 +32,21 @@ public class PostDao {
 	// - 싱글톤
 	
 	// 공고등록 SQL 처리 메소드
-	public boolean pRegister( PostDto postDto ) { // join / select
+	public boolean pRegister( PostDto postDto , int loginEno ) { // join / select
 		try {
 			// SQL 작성
 			String sql = "insert into post( cno , ptitle , pcontent , phistory , pcount , psalary , pend )"
-					+ "values( '"+postDto.getCno()+"' , '"+postDto.getPtitle()+"' , '"+postDto.getPcontent()+"' , '"+postDto.getPhistory()+"' , '"+postDto.getPcount()+"' , '"+postDto.getPsalary()+"' , '"+postDto.getPend()+"' )";
+					+ "values(?,?,?,?,?,?,?)"; 
 			// DB와 연동된 곳에 SQL기재
 			PreparedStatement ps = conn.prepareStatement(sql);
+			// 기재된 SQL 에 매개 변수 값 대입
+			ps.setInt( 1, postDto.getCno() );
+			ps.setString( 2, postDto.getPtitle() );
+			ps.setString( 3, postDto.getPcontent() );
+			ps.setString( 4, postDto.getPhistory() );
+			ps.setString( 5, postDto.getPcount() );
+			ps.setString( 6, postDto.getPsalary() );
+			ps.setString( 7, postDto.getPend() );
 			// 기재된 SQL를 실행하고 결과 받기
 			int count = ps.executeUpdate();
 			// 결과에 따른 처리 및 반환을 한다.
@@ -48,21 +56,24 @@ public class PostDao {
 	} // f end
 	
 	// 공고수정 SQL 처리 메소드
-	public boolean pUpdate( PostDto postDto ) {
+	public boolean pUpdate( PostDto postDto ) { System.out.println(postDto);
 		try {
 			// SQL 작성
-			String sql = "update post set ptitle ='?' , pcontent ='?' ,phistory ='?', pcount ='?' , psalary ='?' , pend ='?' where pno = ?";
+			String sql = "update post set ptitle = ? , pcontent = ? ,phistory = ? , pcount = ? , psalary = ? , pend = ? where pno = ?";
 			// DB와 연동된 곳에 SQL 기재
 			PreparedStatement ps =  conn.prepareStatement(sql);
 			// 기재된 SQL 에 매개 변수 값 대입
 			ps.setString( 1 , postDto.getPtitle() );
 			ps.setString( 2 , postDto.getPcontent() );
-			ps.setString( 3 , postDto.getPcount() );
-			ps.setString( 4 , postDto.getPsalary() );
-			ps.setString( 5 , postDto.getPend() );
-			ps.setInt( 6 , postDto.getPno() );
+			ps.setString( 3 , postDto.getPhistory() );
+			ps.setString( 4 , postDto.getPcount() );
+			ps.setString( 5 , postDto.getPsalary() );
+			ps.setString( 6 , postDto.getPend() );
+			ps.setInt( 7 , postDto.getPno() );
+			System.out.println(ps);
 			// 기재된 SQL를 실행하고 결과 받기
 			int count =  ps.executeUpdate();
+			System.out.println(count);
 			// 결과에 따른 처리 및 반환을 한다.
 			if( count == 1 ) { return true; }
 		}catch( SQLException e ) { System.out.println( e ); }

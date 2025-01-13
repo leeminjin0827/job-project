@@ -44,6 +44,7 @@ public class MainView {
 	      } // if end 
 		} // w end
 	} // v end
+	
 	// [1] 회원 회원가입 메소드
 	public void mSignUp() {
 	         

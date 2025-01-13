@@ -34,7 +34,7 @@ public class MainController {
 	// 2. 기업 회원 로그인 컨트롤러 메소드
 	public int eLogin( EnterpriseDto enterpriseDto ) { // memberDto 를 매개변수로 가져옴
 		int result = MainDao.getInstance().eLogin( enterpriseDto ); // Dao에서 정보가 있으면 회원번호를 반환 없으면 0반환
-		if( result > 0 ) { // 로그인 성공 시 true , 실패 시 false 반환
+		if( result > 0 ) {
 			loginEno = result; // 성공 시 회원번호를 loginEno에 저장
 			return result;
 		}return 0;

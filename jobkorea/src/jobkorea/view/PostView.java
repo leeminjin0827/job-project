@@ -26,7 +26,7 @@ public class PostView {
 			int choose = scan.nextInt();
 			if( choose == 1 ) { 
 				ListView.getInstance().cList(); // 카테고리 리스트 출력
-				pRegister(); }
+				pRegister( loginEno ); }
 			else if( choose == 2 ) {
 				System.out.println(loginEno);
 				ListView.getInstance().pList( loginEno ); // 공고리스트 출력하는 페이지
@@ -38,7 +38,7 @@ public class PostView {
 	} // f end
 	
 	// 1. 공고등록 메소드
-	public void pRegister() {
+	public void pRegister( int loginEno) {
 	    System.out.println("\n[해당하는 카테고리의 번호를 입력하세요.]");	int cno = scan.nextInt();
 	    System.out.println("제목 : ");								String ptitle = scan.next();
 	    System.out.println("내용 : ");								String pcontent = scan.next();
@@ -47,7 +47,7 @@ public class PostView {
 	    System.out.println("연봉 : ");								String psalary = scan.next();
 	    System.out.println("공고마감일 : ");							String pend = scan.next();
 	    PostDto postDto = new PostDto( cno , ptitle , pcontent , phistory , pcount , psalary , pend );
-	    boolean result = PostController.getInstance().pRegister( postDto );
+	    boolean result = PostController.getInstance().pRegister( postDto , loginEno );
 	    if( result ) { System.out.println("[공고등록 성공]"); }
 	    else { System.out.println("[공고등록 실패]"); }
 	} // f end
@@ -61,7 +61,9 @@ public class PostView {
 	    System.out.println("모집인원 : ");						String pcount = scan.next();
 	    System.out.println("연봉 : ");							String psalary = scan.next();
 	    System.out.println("공고마감일 : ");						String pend = scan.next();
+	    System.out.println(pno);
 	    PostDto postDto = new PostDto( pno , ptitle , pcontent , phistory , pcount , psalary , pend);
+	    System.out.println(postDto);
 	    boolean result = PostController.getInstance().pUpdate( postDto );
 	    if( result ) { System.out.println("[수정 완료]"); }
 	    else { System.out.println("[수정 실패]"); }

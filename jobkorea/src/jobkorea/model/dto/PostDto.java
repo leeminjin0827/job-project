@@ -43,6 +43,8 @@ public class PostDto {
 		this.psalary = psalary;
 		this.pend = pend;
 	}
+	
+	
 
 
 	// 메소드
