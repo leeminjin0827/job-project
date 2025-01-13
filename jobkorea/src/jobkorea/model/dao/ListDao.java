@@ -61,7 +61,45 @@ public class ListDao {
 		return cList;
 	}
 	// [2] 공고 리스트 출력
-	public ArrayList<HashMap<String, String>> pList() {
+	public ArrayList<HashMap<String, String>> pList() { // 로그인된 기업번호 매개변수로 받아주세요
+		ArrayList<HashMap<String, String>> pList = new ArrayList<HashMap<String,String>>();
+		try {
+			String sql = "select p.pno , p.ptitle, p.pcontent , p.phistory, p.pcount , p.psalary, p.pstart, p.pend , c.cname , e.ename "
+					+ "	from post p join category c on p.cno = c.cno join enterprise e on p.eno = e.eno where p.eno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, 0); // 매개변수로 전달받은 기업번호 넣어주세요.
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int pno = rs.getInt("pno");
+				String ptitle = rs.getString("ptitle");
+				String pcontent = rs.getString("pcontent");
+				String phistory = rs.getString("phistory");
+				String pcount = rs.getString("pcount");
+				String psalary = rs.getString("psalary");
+				String pstart = rs.getString("pstart");
+				String pend = rs.getString("pend");
+				String cname = rs.getString("cname");
+				String ename = rs.getString("ename");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("공고번호", pno + "");
+				map.put("제목", ptitle );
+				map.put("내용", pcontent );
+				map.put("경력", phistory );
+				map.put("인원", pcount );
+				map.put("연봉", psalary);
+				map.put("공고시작일",pstart );
+				map.put("공고종료일", pend);
+				map.put("카테고리명", cname);
+				map.put("기업명", ename);
+				
+				pList.add(map);
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
 		
+		return pList;
 	}
 }

@@ -44,10 +44,33 @@ public class MainDao {
 	}
 	// 싱글톤 e
 	
-    // [1] 회원 회원가입 메소드
-    public void mSignUp() {
-       
-    }
+	// [1] 일반 회원가입 SQL 처리 메소드 
+		public boolean mSignUp(MemberDto memberDto) {
+			try {
+				// SQL 작성
+				
+				String sql = "insert into member(mid, mpwd, mname, mgender, mdate, maddr) values(?, ?, ?, ?, ?, ?)";
+
+				// DB와 연동된 곳에 SQL 기재
+				PreparedStatement ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, memberDto.getMid());
+				ps.setString(2, memberDto.getMpwd());
+				ps.setString(3, memberDto.getMname());
+				ps.setBoolean(4, memberDto.isMgender());
+				ps.setString(5, memberDto.getMdate());
+				ps.setString(6, memberDto.getMaddr());
+						
+				// 기재된 SQL을 실행하고 결과 받기
+				int count = ps.executeUpdate();
+				
+				// 결과에 따른 처리 및 반환
+				if(count == 1) {return true;}
+			}catch(SQLException e) {System.out.println(e);}
+			return false;
+			
+		} // f mSignUp end
+
     
     // [2] 일반 회원 로그인
  	public int mLogin( MemberDto memberDto ) {
