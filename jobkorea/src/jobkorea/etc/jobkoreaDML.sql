@@ -67,8 +67,8 @@ create table post(
     constraint foreign key(cno) references category (cno),
     constraint foreign key(eno) references enterprise (eno)
 );
-insert into post (ptitle,pcontent, phistory, pcount,psalary, pend) 
-values('국민은행','JAVA / 클라우드 유경험자','경력무관','0명','회사내규에 따름','2025-02-01');
+insert into post (ptitle,pcontent, phistory, pcount,psalary, pend,cno,eno) 
+values('국민은행','JAVA / 클라우드 유경험자','경력무관','0명','회사내규에 따름','2025-02-01'8,6);
 insert into post (ptitle,pcontent, phistory, pcount,psalary, pend)
    values('법무담당자 경력직','서류전형 > 인적성검사 > 임원면접 > 채용검진 > 합격으로 진행',' 5년 이상','00명','회사내규에 따름','2025-02-18');
 insert into post (ptitle,pcontent, phistory, pcount,psalary, pend)
