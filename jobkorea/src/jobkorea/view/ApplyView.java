@@ -54,9 +54,13 @@ public class ApplyView {
 		
 		for(int i = 0; i < pList.size(); i++) {
 			HashMap<String, String> pDto = pList.get(i);
-			System.out.println(pDto);
-			System.out.println();	
+			System.out.println("공고번호 : " + pDto.get("공고번호") 
+							  +" \t 공고명 : " + pDto.get("제목") +" 내용 : " + pDto.get("내용")
+							  +" 경력 : " + pDto.get("경력") +" 모집인원 : " + pDto.get("인원")
+							  +" 연봉 : " + pDto.get("연봉") +" 공고시작일 : " + pDto.get("공고시작일")
+							  +" 공고종료일 : " + pDto.get("공고종료일") +" 카테고리 : " + pDto.get("카테고리명"));	
 		}
+		System.out.println();
 		
 		System.out.print(">> 지원할 공고 번호 : ");
 		int choose2 = scan.nextInt();
@@ -78,13 +82,12 @@ public class ApplyView {
 		ArrayList<HashMap<String, String>> aList = ApplyController.getInstance().applyR(loginMno);
 		
 		System.out.println();
-		System.out.println("지원번호 \t \t 공고명 \t \t 공고종료일 \t \t 합격여부 ");
 		for(int i = 0; i < aList.size(); i++) {
 			HashMap<String, String> aDto = aList.get(i);
 			System.out.println("지원번호 : "+ aDto.get("지원번호") +" \t 공고명 : " + aDto.get("공고명") 
-								+ "공고종료일 : " + aDto.get("rh") + "\t 합격여부" + aDto.get("합격여부"));
-		
+								+ " 공고종료일 : " + aDto.get("공고종료일") + " 합격여부" + aDto.get("합격여부"));
 		}
+		System.out.println();
 	}
 	
 	// [3] 정보 수정 -> 비밀번호 / 이름 / 성별 / 생년월일 / 주소
@@ -131,8 +134,9 @@ public class ApplyView {
 		}
 	}
 	
-	
-	
+	//// + 이미 지원한 공고 중복 지원 불가 기능
+	//// + 내정보보기
+	//// + 돌아가기 기능
 	
 	
 	
