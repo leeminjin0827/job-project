@@ -20,6 +20,15 @@ public class MemberDto {
 		this.mdate = mdate;
 		this.maddr = maddr;
 	}
+	
+	public MemberDto(String mpwd, String mname, boolean mgender, String mdate, String maddr) {
+		super();
+		this.mpwd = mpwd;
+		this.mname = mname;
+		this.mgender = mgender;
+		this.mdate = mdate;
+		this.maddr = maddr;
+	}
 	public int getMno() {
 		return mno;
 	}
@@ -67,9 +76,5 @@ public class MemberDto {
 		return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", mgender=" + mgender
 				+ ", mdate=" + mdate + ", maddr=" + maddr + "]";
 	}
-	
-	
-	
-	
-	
+
 }

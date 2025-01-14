@@ -50,5 +50,4 @@ public class ApplyDto {
 	public String toString() {
 		return "ApplyDto [apass=" + apass + ", pno=" + pno + ", mno=" + mno + "]";
 	}
-
-	}
+}
