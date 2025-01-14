@@ -1,16 +1,6 @@
 package jobkorea.model.dao;
 
-<<<<<<< HEAD
-public class ListDao {
-	
-	// + 싱글톤
-	private static ListDao instance = new ListDao();
-	private ListDao() {}
-	public static ListDao getinstance () { return instance; }
-	// - 싱글톤
-	
-} // f end
-=======
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -116,4 +106,4 @@ public class ListDao {
 		return pList;
 	}
 }
->>>>>>> branch 'kimdoha' of https://github.com/leeminjin0827/job-project
+

@@ -2,6 +2,7 @@ package jobkorea.view;
 
 import java.util.Scanner;
 
+
 import jobkorea.controller.IndexController;
 import jobkorea.model.dto.MemberDto;
 import jobkorea.view.MainView;

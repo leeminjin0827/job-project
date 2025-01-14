@@ -111,19 +111,4 @@ public class PostDto {
 				+ ", pcount=" + pcount + ", psalary=" + psalary + ", pstart=" + pstart + ", pend=" + pend + ", cno="
 				+ cno + ", eno=" + eno + "]";
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
 }
-=======
-
-
-	
-	
-	
-	
-	
-}
->>>>>>> branch 'kimdoha' of https://github.com/leeminjin0827/job-project

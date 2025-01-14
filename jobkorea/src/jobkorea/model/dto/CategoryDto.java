@@ -37,8 +37,5 @@ public class CategoryDto {
 	
 	
 	
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'kimdoha' of https://github.com/leeminjin0827/job-project

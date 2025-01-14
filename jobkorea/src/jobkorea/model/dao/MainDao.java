@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import jobkorea.model.dto.EnterpriseDto;
 import jobkorea.model.dto.MemberDto;
@@ -76,5 +78,70 @@ public class MainDao {
 		catch( SQLException e ) { System.out.println( e ); }
 		return 0;
 	} // f end
-	
+
 } // c end
+
+ 	
+ 	
+    // [3] 기업 로그아웃 메소드
+    public void eLogout() {
+       
+    }
+    
+    
+    // [1] 우수기업 R
+    public ArrayList<HashMap<String, String>>  bestList() {
+    	ArrayList<HashMap<String, String>> bList = new ArrayList<>();
+    	try {
+    		String sql = "select e.ename , avg(r.rrating) as ravg from review r left join enterprise e "
+    					+ "on  r.eno = e.eno group by r.eno order by ravg desc";
+    		PreparedStatement ps = conn.prepareStatement(sql);
+    		ResultSet rs = ps.executeQuery();
+    		
+    		while(rs.next()) {
+    			String list = rs.getString("ename");
+    			String rating = rs.getString("ravg");
+    			
+    			HashMap<String, String> map = new HashMap<String, String>();
+    			
+    			map.put("기업명", list);
+    			map.put("별점", rating);
+    			
+    			bList.add(map);
+    		}
+    	}catch (Exception e) {
+    		System.out.println(e);
+		}
+    	
+    	return bList;
+    }
+    // [2] 후기 R
+    public ArrayList<HashMap<String, String>>  reviewList(String ename) {
+    	ArrayList<HashMap<String, String>> rList = new ArrayList<>();
+		try {
+			String sql = "select e.ename,  r.rcontent, r.rrating from review r join enterprise e "
+						+ "on r.eno = e.eno  where e.ename = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, ename);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String name = rs.getString("ename");
+				String rcontent = rs.getString("rcontent");
+				String rrating = rs.getString("rrating");
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("기업명", name);
+				map.put("후기", rcontent);
+				map.put("별점", rrating);
+				
+				rList.add(map);
+			}
+			
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return rList;
+	}
+}
