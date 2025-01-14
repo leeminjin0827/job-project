@@ -29,8 +29,8 @@ public class ApplyController {
 	}
 	
 	// [1] 지원
-	public boolean applyC(int choose , int loginMno) {
-		boolean result = ApplyDao.getInstance().applyC(choose, loginMno);
+	public boolean applyC(int choose , int choose2, int loginMno) {
+		boolean result = ApplyDao.getInstance().applyC(choose, choose2, loginMno);
 		return result;
 	}
 	

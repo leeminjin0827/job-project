@@ -28,10 +28,13 @@ public class MainController {
  	public int getLoginMno() { return loginMno; }
  	public int getLoginEno() { return loginEno; }
 	
-    // [1] 회원 회원가입 메소드
-    public void mSignUp() {
-       
-    }
+
+	// [1] 일반 회원가입 메소드
+ 	public boolean mSignUp(MemberDto memberDto) {
+	      boolean result = MainDao.getInstance().mSignUp(memberDto);
+	      return result;
+	}
+	
     // * 로그인 번호 저장
  	
  	// [2] 일반 회원 로그인 
@@ -55,9 +58,10 @@ public class MainController {
     ///////
     
     // [1] 기업 회원가입 메소드
-    public void eSignUp() {
-       
-    }
+    public boolean eSignUp(EnterpriseDto enterpriseDto) {
+	      boolean result = MainDao.getInstance().eSignUp(enterpriseDto);
+	      return result;
+	}
     
     // [2] 기업 회원 로그인 
  	public boolean eLogin( EnterpriseDto enterpriseDto ) { // memberDto 를 매개변수로 가져옴

@@ -65,15 +65,14 @@ public class ApplyView {
 		System.out.print(">> 지원할 공고 번호 : ");
 		int choose2 = scan.nextInt();
 		
-		boolean result = ApplyController.getInstance().applyC(choose2 , loginMno);
+		boolean result = ApplyController.getInstance().applyC(choose , choose2 , loginMno);
 		
-		// 해당 기업의 지원리스트 회원번호 + 하기 
-		
+		// console 창에 뜬 공고에만 지원가능 해야함
 		if(result == true) {
 			System.out.println(">> 지원 완료");
 
 		}else {
-			System.out.println(">> 지원 실패");
+			System.out.println(">> 해당 공고번호가 존재하지 않습니다.");
 		}
 	}
 	
@@ -130,7 +129,7 @@ public class ApplyView {
 		if(result == true) {
 			System.out.println(">> 지원 취소 완료");
 		}else {
-			System.out.println(">> 지원 취소 실패");
+			System.out.println(">> 해당 지원번호가 존재하지 않습니다.");
 		}
 	}
 	

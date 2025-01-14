@@ -102,9 +102,29 @@ public class MainDao {
     
     
     // [1] 기업 회원가입 메소드
-    public void eSignUp() {
-       
-    }
+	public boolean eSignUp(EnterpriseDto enterpriseDto) {
+		try {
+			// SQL 작성
+			
+			String sql = "insert into enterprise(eid, epwd, ename, eaddr) values(?, ?, ?, ?)";
+
+			// DB와 연동된 곳에 SQL 기재
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, enterpriseDto.getEid());
+			ps.setString(2, enterpriseDto.getEpwd());
+			ps.setString(3, enterpriseDto.getEname());
+			ps.setString(4, enterpriseDto.getEaddr());
+					
+			// 기재된 SQL을 실행하고 결과 받기
+			int count = ps.executeUpdate();
+			
+			// 결과에 따른 처리 및 반환
+			if(count == 1) {return true;}
+		}catch(SQLException e) {System.out.println(e);}
+		return false;
+	}
+	
     // [2] 기업 회원 로그인
  	public int eLogin( EnterpriseDto enterpriseDto ) {
  		try {

@@ -68,6 +68,7 @@ public class ListDao {
 					+ "	from post p join category c on p.cno = c.cno join enterprise e on p.eno = e.eno where p.eno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, 0); // 매개변수로 전달받은 기업번호 넣어주세요.
+			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -96,6 +97,7 @@ public class ListDao {
 				
 				pList.add(map);
 			}
+			
 		}catch (SQLException e) {
 			System.out.println(e);
 		}
