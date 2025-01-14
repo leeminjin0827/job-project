@@ -50,10 +50,4 @@ public class ApplyDto {
 	public String toString() {
 		return "ApplyDto [apass=" + apass + ", pno=" + pno + ", mno=" + mno + "]";
 	}
-<<<<<<< HEAD
-
-	}
-=======
-	
 }
->>>>>>> branch 'kimdoha' of https://github.com/leeminjin0827/job-project
