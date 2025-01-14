@@ -75,7 +75,18 @@ public class ReviewDto {
 		return "ReviewDto [rno=" + rno + ", rrating=" + rrating + ", rcontent=" + rcontent + ", rdate=" + rdate
 				+ ", eno=" + eno + ", mno=" + mno + "]";
 	}
+<<<<<<< HEAD
 	
 	
 	
 }
+=======
+
+
+	
+	
+	
+	
+	
+}
+>>>>>>> branch 'kimdoha' of https://github.com/leeminjin0827/job-project
