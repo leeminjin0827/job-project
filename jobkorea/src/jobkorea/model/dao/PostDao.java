@@ -81,4 +81,23 @@ public class PostDao {
 		return false;	
 	} // f end
 	
+	// 공고삭제 SQL 처리 메소드
+	public boolean pDelete( int pno ) {
+		try {
+			// SQL 작성
+			String sql = "delete from post where pno = ?";
+			// DB와 연동된 곳에 SQL 기재
+			PreparedStatement ps = conn.prepareStatement(sql);
+			// 기재된 SQL 에 매개 변수 값 대입
+			ps.setInt( 1 , pno );
+			// 기재된 SQL를 실행하고 결과 받기
+			int count = ps.executeUpdate();
+			if( count == 1 ) return true;
+		}catch( SQLException e ) { System.out.println( e ); }
+		return false;
+	} // f end
+	
+	
+	
+	
 } // c end

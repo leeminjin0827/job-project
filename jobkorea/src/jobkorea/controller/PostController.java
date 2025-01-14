@@ -24,5 +24,10 @@ public class PostController {
 	} // f end
 	
 	// 공고삭제 컨트롤러 메소드
+	public boolean pDelete( int pno ) {
+		boolean result = PostDao.getInstance().pDelete( pno );
+		if( result ) { return true; }
+		else { return false; }
+	} // f end
 	
 } // c end

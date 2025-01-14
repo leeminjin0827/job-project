@@ -24,16 +24,26 @@ public class PostView {
 		while( true ) {
 			System.out.println("1.공고등록 2.공고수정 3.공고삭제 4.지원현황 5.로그아웃");
 			int choose = scan.nextInt();
-			if( choose == 1 ) { 
+			if( choose == 1 ) {  // 1
 				ListView.getInstance().cList(); // 카테고리 리스트 출력
 				pRegister( loginEno ); }
-			else if( choose == 2 ) {
-				System.out.println(loginEno);
+			else if( choose == 2 ) { // 2
 				ListView.getInstance().pList( loginEno ); // 공고리스트 출력하는 페이지
 				pUpdate(); }
-			else if( choose == 3 ) { }
-			else if( choose == 4 ) { }
-			else if( choose == 5 ) { }
+			else if( choose == 3 ) { // 3
+				System.out.println("1.삭제 2.취소");
+				int choose1 = scan.nextInt();
+				if( choose1 == 1 ) {
+					ListView.getInstance().pList( loginEno );
+					pDelete(); }
+				else if( choose == 2 ) { break; }
+			}
+			else if( choose == 4 ) { // 4
+				
+			}
+			else if( choose == 5 ) { // 5
+				
+			}
 		} // w end
 	} // f end
 	
@@ -61,19 +71,21 @@ public class PostView {
 	    System.out.println("모집인원 : ");						String pcount = scan.next();
 	    System.out.println("연봉 : ");							String psalary = scan.next();
 	    System.out.println("공고마감일 : ");						String pend = scan.next();
-	    System.out.println(pno);
 	    PostDto postDto = new PostDto();
 	    postDto.setPno(pno); postDto.setPtitle(ptitle); postDto.setPcontent(pcontent); postDto.setPhistory(phistory);
 	    postDto.setPcount(pcount); postDto.setPsalary(psalary); postDto.setPend(pend);
-	    System.out.println(postDto);
 	    boolean result = PostController.getInstance().pUpdate( postDto );
 	    if( result ) { System.out.println("[수정 완료]"); }
 	    else { System.out.println("[수정 실패]"); }
 	} // f end
 	
 	// 3. 공고삭제 메소드
-	public void pDelete() {
-		
+	public void pDelete( ) {
+		System.out.println("[삭제할 공고 번호를 입력하세요]");
+		int pno = scan.nextInt();
+		boolean result = PostController.getInstance().pDelete( pno );
+		if( result ) { System.out.println("삭제 성공"); }
+		else { System.out.println("삭제 실패"); }
 	} // f end
 	
 	// 4. 지원현황 메소드
