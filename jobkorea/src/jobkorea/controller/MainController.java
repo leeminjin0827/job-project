@@ -23,6 +23,7 @@ public class MainController {
 		return instance;
 	}
 	// 싱글톤 e
+	
 	private int loginMno = 0; // 로그인한 회원의 번호 저장하는 변수
  	private int loginEno = 0;
  	public int getLoginMno() { return loginMno; }
