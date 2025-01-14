@@ -19,6 +19,7 @@ import jobkorea.controller.MainController;
 
 public class MainDao {
 	
+	
 	private Connection conn;
 	   private String dburl = "jdbc:mysql://localhost:3306/jobkorea";
 	   private String dbuser = "root";
