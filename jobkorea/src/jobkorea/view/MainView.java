@@ -3,14 +3,12 @@ package jobkorea.view;
 import java.util.ArrayList;
 
 
-
 import java.util.HashMap;
 import java.util.Scanner;
 
 import jobkorea.controller.MainController;
 import jobkorea.model.dto.PostDto;
 import jobkorea.model.dto.EnterpriseDto;
-import jobkorea.model.dto.IndexView;
 import jobkorea.model.dto.MemberDto;
 import jobkorea.model.dto.ReviewDto;
 import jobkorea.model.dao.MainDao;
@@ -19,13 +17,6 @@ public class MainView {
 	// 싱글톤 s
 	// 생성자
 	private MainView() {}
-<<<<<<< HEAD
-	public static MainView getInstance() { return instance; }
-	// - 싱글톤
-	Scanner scan = new Scanner( System.in );
-	
-	// 1 : 회원 로그인 / 회원가입 메소드 연동 -> 성공시 지원 / 후기 view 연동 
-=======
 	// 객체 생성
 	private static MainView instance = new MainView();
 	public static MainView getInstance () {
@@ -36,45 +27,11 @@ public class MainView {
 	Scanner scan = new Scanner(System.in);
 
 	// 1 : 회원 로그인 / 회원가입 메소드 연동 -> 성공 시 지원 / 후기 view 연동 
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 	// 2 : 기업 로그인 / 회원가입 메소드 연동 -> 성공 시 기업 view 연동 
 	// 3 : 취업 연동
 	public void run() {
 		
 		while(true) {
-<<<<<<< HEAD
-	      System.out.println("1.일반 2.기업");
-	      int choose = scan.nextInt();
-	      if( choose == 1 ) { 
-	    	  System.out.println("1.일반 회원가입 2.일반 로그인 3.로그아웃");
-	    	  int choose1 = scan.nextInt();
-	    	  if( choose1 == 1 ) { mSignUp(); }
-	    	  else if( choose1 == 2 ) { 
-	    		  int loginMno = mLogin();	
-					if(loginMno > 0) { // 성공 시 지원 / 후기 View 연동
-						IndexView.getInstance().index(loginMno);
-					}
-				}
-
-	    	  else if( choose1 == 3 ) { mLogout(); }
-	      } // if end
-	      else if( choose == 2 ) {
-	    	  System.out.println("1.기업 회원가입 2.기업 로그인 3.로그아웃");
-	    	  int choose1 = scan.nextInt();
-	    	  if( choose1 == 1 ) { eSignUp(); }
-	    	  else if( choose1 == 2 ) { eLogin(); }
-	    	  else if( choose1 == 3 ) { eLogout(); }
-	      } // if end 
-		} // w end
-	} // v end
-	
-	
-	
-	
-	// [1] 회원 회원가입 메소드
-	public void mSignUp() {
-	         
-=======
 			System.out.println(">> 1.일반 2.기업 3.취업");
 			int choose = scan.nextInt();
 
@@ -113,13 +70,7 @@ public class MainView {
 				}
 			}
 		}
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 	}
-<<<<<<< HEAD
-	   
-	// [2] 회원 로그인 메소드
-	public int mLogin() {
-=======
 	// 회원가입 로그인 결과를 boolean 으로 반환받아 변수에 반환값을 저장 -> 성공 : 다음 view 연동 실패 : break;
 
 	 // [1] 일반 회원가입 메소드 / 타입 boolean
@@ -161,7 +112,6 @@ public class MainView {
 	 
 	// [2] 회원 로그인 메소드 
     public int mLogin() {
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 		// 입력
 		System.out.print("아이디 : ");	String mid = scan.next();
 		System.out.print("비밀번호 : ");	String mpwd = scan.next();
@@ -170,19 +120,8 @@ public class MainView {
 	    memberDto.setMid(mid);
 	    memberDto.setMpwd(mpwd);
 	    // 컨트롤러에게 전달하고 응답 받기
-<<<<<<< HEAD
-	    int result = MainController.getinstance().mLogin(memberDto);
-=======
 	    int result = MainController.getInstance().mLogin(memberDto);
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 	    // 응답에 따른 처리
-<<<<<<< HEAD
-	    if( 0 < result ) {System.out.println("[로그인 성공]");
-	    	System.out.println(result);
-	    	return result;
-	    }
-	    else { System.out.println("[회원정보가 없습니다.]"); }
-=======
 	    if( result > 0 ) {
 	    	System.out.println(">> 로그인 성공"); 
 	    	return result;
@@ -190,49 +129,8 @@ public class MainView {
 	    else {
 	    	System.out.println(">> 회원정보가 없습니다."); 
 	    }
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 	    return 0;
 	}
-<<<<<<< HEAD
-	
-	// [3] 회원 로그아웃 메소드
-	public void mLogout() {
-	         
-	}
-	
-	
-
-	
-	   
-	// [1] 기업 회원가입 메소드 / 타입 boolean
-	public void eSignUp() {
-		System.out.println("===== 기업 회원가입 =====");
-		System.out.print("아이디 : ");		String eid = scan.next();
-		System.out.print("비밀번호 : ");	String epwd = scan.next();
-		System.out.print("기업명 : ");		String ename = scan.next();
-		System.out.print("주소 : ");		String eaddr = scan.next();
-		
-		EnterpriseDto enterpriseDto = new EnterpriseDto();
-		enterpriseDto.setEid(eid);
-		enterpriseDto.setEpwd(epwd);
-		enterpriseDto.setEname(ename);
-		enterpriseDto.setEaddr(eaddr);
-			   
-		boolean result = MainController.getinstance().eSignUp(enterpriseDto);
-		if(result) {
-		System.out.println("[회원가입 성공]");
-		}else {
-		System.out.println("[회원가입 실패]");
-      } 
-   }
-	   
-	
-	
-	
-	// [2] 기업 로그인 메소드
-	public void eLogin() {
-		System.out.print("아이디 : ");	String eid = scan.next();
-=======
     
     // [3] 회원 로그아웃 메소드
     public void mLogout() {
@@ -252,7 +150,6 @@ public class MainView {
     public void eSignUp() {
 		System.out.println("===== 기업 회원가입 =====");
 		System.out.print("아이디 : ");		String eid = scan.next();
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 		System.out.print("비밀번호 : ");	String epwd = scan.next();
 		System.out.print("기업명 : ");		String ename = scan.next();
 		System.out.print("주소 : ");		String eaddr = scan.next();
@@ -313,15 +210,6 @@ public class MainView {
     	}
     	System.out.println();
 	}
-<<<<<<< HEAD
-	   
-	
-	
-	
-	// [3] 기업 로그아웃 메소드
-	public void eLogout() {
-	         
-=======
     
     // [2] 후기 R
     public void reviewList() {
@@ -343,9 +231,7 @@ public class MainView {
     	}
     	System.out.println();
     	
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 	}
     
 }
-
 
