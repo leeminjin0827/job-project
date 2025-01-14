@@ -81,6 +81,7 @@ public class MainView {
 	      System.out.print("비밀번호 : ");		String mpwd = scan.next();
 	      System.out.print("이름 : ");		String mname = scan.next();
 	      System.out.print("성별(0.남/1.여) : ");		int gender = scan.nextInt();
+	      
 	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
 	      
 	      if(gender == 1) { // 
