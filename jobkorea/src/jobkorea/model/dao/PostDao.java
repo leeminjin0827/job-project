@@ -35,8 +35,8 @@ public class PostDao {
 	public boolean pRegister( PostDto postDto , int loginEno ) { // join / select
 		try {
 			// SQL 작성
-			String sql = "insert into post( cno , ptitle , pcontent , phistory , pcount , psalary , pend )"
-					+ "values(?,?,?,?,?,?,?)"; 
+			String sql = "insert into post( cno , ptitle , pcontent , phistory , pcount , psalary , pend , eno )"
+					+ "values(?,?,?,?,?,?,?,?)"; 
 			// DB와 연동된 곳에 SQL기재
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// 기재된 SQL 에 매개 변수 값 대입
@@ -47,6 +47,7 @@ public class PostDao {
 			ps.setString( 5, postDto.getPcount() );
 			ps.setString( 6, postDto.getPsalary() );
 			ps.setString( 7, postDto.getPend() );
+			ps.setInt( 8 , loginEno );
 			// 기재된 SQL를 실행하고 결과 받기
 			int count = ps.executeUpdate();
 			// 결과에 따른 처리 및 반환을 한다.

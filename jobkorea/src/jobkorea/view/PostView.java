@@ -62,7 +62,9 @@ public class PostView {
 	    System.out.println("연봉 : ");							String psalary = scan.next();
 	    System.out.println("공고마감일 : ");						String pend = scan.next();
 	    System.out.println(pno);
-	    PostDto postDto = new PostDto( pno , ptitle , pcontent , phistory , pcount , psalary , pend);
+	    PostDto postDto = new PostDto();
+	    postDto.setPno(pno); postDto.setPtitle(ptitle); postDto.setPcontent(pcontent); postDto.setPhistory(phistory);
+	    postDto.setPcount(pcount); postDto.setPsalary(psalary); postDto.setPend(pend);
 	    System.out.println(postDto);
 	    boolean result = PostController.getInstance().pUpdate( postDto );
 	    if( result ) { System.out.println("[수정 완료]"); }
