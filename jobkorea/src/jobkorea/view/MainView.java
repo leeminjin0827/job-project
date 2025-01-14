@@ -58,7 +58,10 @@ public class MainView {
 				if(choose3 == 1) {
 					eSignUp();
 				}else if(choose3 == 2) {
-					 eLogin();	// 성공 시 기업 View 연동
+					int loginEno = eLogin();
+					if(loginEno > 0) { // 성공 시 기업 View 연동 
+						PostView.getInstance().pIndex(loginEno);	
+					}
 				}
 			}else if(choose == 3) {
 				System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
@@ -169,7 +172,7 @@ public class MainView {
       } 
    }
     // [2] 기업 로그인 메소드
- 	public void eLogin() {
+ 	public int eLogin() {
  		System.out.print("아이디 : ");	String eid = scan.next();
  		System.out.print("비밀번호 : ");	String epwd = scan.next();
  		// 객체화
@@ -177,14 +180,14 @@ public class MainView {
  	    enterpriseDto.setEid(eid);
  	    enterpriseDto.setEpwd(epwd);
  	    // 컨트롤러에게 전달하고 응답 받기
- 	    boolean result = MainController.getInstance().eLogin(enterpriseDto);
+ 	    int result = MainController.getInstance().eLogin(enterpriseDto);
  	    // 응답에 따른 처리
- 	    if( result ) {
+ 	    if( result > 0 ) {
  	    	System.out.println(">> 로그인 성공");
- 	    	// EnterpriscView 메인메뉴 메소드 호출
- 	    	//EnterpriseView.getinstance().post();
+ 	    	return result;
  	    	}
  	    else { System.out.println(">> 회원정보가 없습니다."); }
+ 	    return 0;
  	}
  	
     // [3] 기업 로그아웃 메소드

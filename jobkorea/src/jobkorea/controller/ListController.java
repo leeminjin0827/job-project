@@ -22,8 +22,8 @@ public class ListController {
 		return cList;
 	}
 	// [2] 공고 리스트 출력
-	public ArrayList<HashMap<String, String>> pList() {
-		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList();
+	public ArrayList<HashMap<String, String>> pList( int loginEno ) {
+		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList( loginEno );
 		
 		return pList;
 	}

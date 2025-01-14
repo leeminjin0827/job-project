@@ -62,13 +62,13 @@ public class ListDao {
 		return cList;
 	}
 	// [2] 공고 리스트 출력
-	public ArrayList<HashMap<String, String>> pList() { // 로그인된 기업번호 매개변수로 받아주세요
+	public ArrayList<HashMap<String, String>> pList( int loginEno ) { // 로그인된 기업번호 매개변수로 받아주세요
 		ArrayList<HashMap<String, String>> pList = new ArrayList<HashMap<String,String>>();
 		try {
 			String sql = "select p.pno , p.ptitle, p.pcontent , p.phistory, p.pcount , p.psalary, p.pstart, p.pend , c.cname , e.ename "
 					+ "	from post p join category c on p.cno = c.cno join enterprise e on p.eno = e.eno where p.eno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, 0); // 매개변수로 전달받은 기업번호 넣어주세요.
+			ps.setInt(1, loginEno); // 매개변수로 전달받은 기업번호 넣어주세요.
 			
 			ResultSet rs = ps.executeQuery();
 			
