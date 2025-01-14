@@ -91,11 +91,7 @@ public class MainDao {
 			return 0;
 		} // f end
  	
-    // [3] 회원 로그아웃 메소드
-    public void mLogout() {
-    	
-    }
-    
+ 
     
     
     // [1] 기업 회원가입 메소드
@@ -144,11 +140,7 @@ public class MainDao {
 		return 0;
 	} // f end
  	
- 	
-    // [3] 기업 로그아웃 메소드
-    public void eLogout() {
-       
-    }
+
     
     
     // [1] 우수기업 R
