@@ -25,7 +25,7 @@ public class ApplyView {
 	// 메인 
 	public void apply(int loginMno) {
 		while(true) {
-			System.out.println(">> 1. 지원하기 2. 지원현황 3. 정보수정 4. 지원삭제 5. 로그아웃");
+			System.out.println(">> 1. 지원하기 2. 지원현황 3. 정보수정 4. 지원삭제 5. 돌아가기");
 			int choose = scan.nextInt();
 			
 			if(choose == 1) {
@@ -39,7 +39,6 @@ public class ApplyView {
 				applyR(loginMno);	// 지원리스트 자동 출력
 				applyD();
 			}else if(choose == 5) {
-				MainView.getInstance().mLogout();
 				break;
 			}
 		}
