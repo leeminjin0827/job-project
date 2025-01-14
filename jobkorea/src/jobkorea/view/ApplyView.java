@@ -66,7 +66,7 @@ public class ApplyView {
 		
 		boolean result = ApplyController.getInstance().applyC(choose , choose2 , loginMno);
 		
-		// console 창에 뜬 공고에만 지원가능 해야함
+		// console 창에 뜬 공고에만 지원가능 해야함 !!! //////////
 		if(result == true) {
 			System.out.println(">> 지원 완료");
 

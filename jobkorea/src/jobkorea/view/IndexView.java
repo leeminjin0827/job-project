@@ -23,7 +23,7 @@ public class IndexView {
 			if(choose == 1) {
 				ApplyView.getInstance().apply(loginMno);
 			}else if(choose == 2) {
-				
+				// 은서 님 개인 view 랑 연동
 			}else if (choose == 3) {
 				myInfo(loginMno);
 			}else if(choose == 4) {
@@ -34,7 +34,7 @@ public class IndexView {
 	}
 	
 	
-	 // 회원 내정보보기
+	// 회원 내정보보기
     public void myInfo(int loginMno) {
     	MemberDto memberDto = IndexController.getInstance().myInfo(loginMno);
 		

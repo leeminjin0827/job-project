@@ -46,8 +46,6 @@ public class MainView {
 					if(loginMno > 0) { // 성공 시 지원 / 후기 View 연동
 						IndexView.getInstance().index(loginMno);
 					}
-				}else if (choose2 == 3) {
-					
 				}
 				
 			}else if(choose == 2) {
@@ -59,10 +57,7 @@ public class MainView {
 					eSignUp();
 				}else if(choose3 == 2) {
 					 eLogin();	// 성공 시 기업 View 연동
-				}else if (choose3 == 3) {
-					
 				}
-			
 			}else if(choose == 3) {
 				System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
 				int choose4 = scan.nextInt();
@@ -71,8 +66,6 @@ public class MainView {
 					bestList();
 				}else if(choose4 == 2) {
 					reviewList();
-				}else if (choose4 ==3) {
-					
 				}
 			}
 		}
