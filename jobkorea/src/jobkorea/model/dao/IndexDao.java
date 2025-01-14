@@ -31,7 +31,7 @@ public class IndexDao {
 		return instance;
 	}
 	
-	
+	// 내정보
 	public MemberDto myInfo(int loginMno) {
 		try {
 			String sql = "select mid, mpwd , mname , mgender, mdate, maddr from member where mno = ?";
