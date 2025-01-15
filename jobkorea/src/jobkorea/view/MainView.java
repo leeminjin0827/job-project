@@ -90,7 +90,11 @@ public class MainView {
 	      }else if(gender == 0 ) {
 	    	  mgender = false;
 	    	  // System.out.println(mgender);
+	      }else {
+		      /// 성별 입력 시 0 ,1 외 숫자 입력 시 남성 출력되는 거 해결하기 -> boolean 으로 설계해서 유효성검사 못할지도.....
+	    	  System.out.println(">> 성별 입력 시 유효한 값으로 입력하세요.");
 	      }
+
 	      
 	      System.out.print("생년월일 : ");		String mdate = scan.next();
 	      System.out.print("주소 : ");		String maddr = scan.next();
@@ -105,9 +109,9 @@ public class MainView {
 	     	      
 	      boolean result = MainController.getInstance().mSignUp(memberDto);
 	      if(result) {
-	    	  System.out.println("[회원가입 성공]");
+	    	  System.out.println(">> 회원 회원가입 성공");
 	      }else {
-	    	  System.out.println("[회원가입 실패]");
+	    	  System.out.println(">> 회원 회원가입 실패");
 	      }  
 
 	   }
@@ -148,7 +152,7 @@ public class MainView {
    
     
     
-    
+    // [1] 기업 회원가입 메소드
     public void eSignUp() {
 		System.out.println("===== 기업 회원가입 =====");
 		System.out.print("아이디 : ");		String eid = scan.next();
@@ -164,9 +168,9 @@ public class MainView {
 			   
 		boolean result = MainController.getInstance().eSignUp(enterpriseDto);
 		if(result) {
-		System.out.println("[회원가입 성공]");
+		System.out.println(">> 기업 회원가입 성공");
 		}else {
-		System.out.println("[회원가입 실패]");
+		System.out.println(">> 기업 회원가입 실패");
       } 
    }
     // [2] 기업 로그인 메소드
