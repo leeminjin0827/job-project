@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import jobkorea.model.dao.ListDao;
+import jobkorea.model.dto.ApplyDto;
 import jobkorea.view.ListView;
 
 public class ListController {
@@ -26,6 +27,11 @@ public class ListController {
 		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList( loginEno );
 		
 		return pList;
+	}
+	
+	// [3] 지원 리스트 출력
+	public ArrayList<HashMap<String,String>> aList( int loginEno ){
+		return ListDao.getInstance().aList(loginEno);
 	}
 }
 

@@ -3,8 +3,10 @@ package jobkorea.model.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import jobkorea.model.dto.EnterpriseDto;
 import jobkorea.model.dto.PostDto;
 
 public class PostDao {
@@ -57,7 +59,7 @@ public class PostDao {
 	} // f end
 	
 	// 공고수정 SQL 처리 메소드
-	public boolean pUpdate( PostDto postDto ) { System.out.println(postDto);
+	public boolean pUpdate( PostDto postDto ) { 
 		try {
 			// SQL 작성
 			String sql = "update post set ptitle = ? , pcontent = ? ,phistory = ? , pcount = ? , psalary = ? , pend = ? where pno = ?";
@@ -90,6 +92,7 @@ public class PostDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// 기재된 SQL 에 매개 변수 값 대입
 			ps.setInt( 1 , pno );
+			System.out.println(ps);
 			// 기재된 SQL를 실행하고 결과 받기
 			int count = ps.executeUpdate();
 			if( count == 1 ) return true;
@@ -97,6 +100,36 @@ public class PostDao {
 		return false;
 	} // f end
 	
+	// 지원관리 SQL 처리 메소드
+	public boolean pCheck( int ano ) {
+		try {
+			String sql = "update apply set apass = not apass where ano = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, ano);
+			int count = ps.executeUpdate();
+			if( count == 1 ) { return true; }
+		}catch( SQLException e ) { System.out.println( e ); }
+		return false;
+		
+	}
+	
+	// 내정보보기 SQL 처리 메소드
+	public EnterpriseDto pMyinfo( int loginEno ) {
+		try {
+			String sql = "select * from enterprise where eno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, loginEno);
+			ResultSet rs = ps.executeQuery();
+			if( rs.next() ) {
+				EnterpriseDto enterpriseDto = new EnterpriseDto();
+				enterpriseDto.setEid(rs.getString("eid") );
+				enterpriseDto.setEname(rs.getString("ename") );
+				enterpriseDto.setEaddr(rs.getString("eaddr"));
+				return enterpriseDto;
+			}
+		}catch( SQLException e ) { System.out.println( e ); }
+		return null;
+	}
 	
 	
 	

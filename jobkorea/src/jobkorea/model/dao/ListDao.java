@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import jobkorea.controller.ListController;
+import jobkorea.model.dto.ApplyDto;
 
 public class ListDao {
 	private Connection conn;
@@ -104,6 +105,32 @@ public class ListDao {
 		}
 		
 		return pList;
+	}
+	
+	// [3] 지원 리스트 출력
+	public ArrayList< HashMap<String,String> >aList( int loginEno ){
+		ArrayList< HashMap<String,String> > list = new ArrayList<HashMap<String,String>>();
+		try {
+			String sql = "select a.ano , p.ptitle , m.mname , a.apass "
+					+ "	from apply as a inner join post as p on a.pno = p.pno "
+					+ "	inner join member as m on a.mno = m.mno where eno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt( 1 , loginEno );
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() ) {
+				int ano = rs.getInt("ano");
+				String ptitle = rs.getString("ptitle");
+				String mname = rs.getString("mname");
+				Boolean apass = rs.getBoolean("apass");
+				HashMap<String,String> map = new HashMap<String, String>();
+				map.put("지원번호", ano + "");
+				map.put("공고번호", ptitle );
+				map.put("회원번호", mname );
+				map.put("apass", apass+"");
+				list.add(map);
+			} // w end
+		}catch( SQLException e ) { System.out.println( e ); }
+		return list;
 	}
 }
 
