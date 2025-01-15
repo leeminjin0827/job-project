@@ -156,12 +156,10 @@ insert into review (rcontent,rrating , pno ,mno) values ('얍',1, 1, 1) ;
 select * from review;
 
 -- 합격 리스트 sample --
-select a.ano , p.ptitle , e.ename , p.pno from apply as a join post as p on a.pno = p.pno join member as m on a.mno = m.mno join enterprise e on p.eno = e.eno 
-   where a.apass = true and a.mno = 3;
+select a.ano , p.ptitle , e.ename , p.pno from apply as a join post as p on a.pno = p.pno join member as m on a.mno = m.mno join enterprise e on p.eno = e.eno where a.apass = true and a.mno = 3;
 
 -- 후기 리스트 sample --
-select r.rno, e.ename ,  r.rcontent , r.rrating , r.rdate from review r join enterprise e on r.eno = e.eno join member m on r.mno = m.mno 
-   where r.mno = 3;
+select r.rno, e.ename ,  r.rcontent , r.rrating , r.rdate from review r join post p on r.pno = p.pno join enterprise e on p.eno = e.eno join member m on r.mno = m.mno where r.mno = 3;
 
 -- 공고 등록 sample --
 insert into post (ptitle, pcontent, phistory , pcount, psalary ,pend , eno) values ('d','s','s','s','s','2025-12-12', 1);
@@ -169,5 +167,8 @@ select * from post;
 -- 내정보 조회 --
 select mid, mpwd , mname , mgender, mdate, maddr from member where mno = 1;
 
-
+-- 후기 수정 --
+select * from review;
+update review set rcontent = 'aa', rrating = '1' where rno = '5';
+select * from review;
 
