@@ -38,7 +38,7 @@ public class MainView {
 
          if(choose == 1) {
          
-            System.out.println(">> 1. 일반회원가입 2. 일반로그인 3. 메인페이지");
+            System.out.println(">> 1.일반회원가입 2.일반로그인 3.메인페이지");
             int choose2 = scan.nextInt();
             
             if(choose2 == 1) {
@@ -51,7 +51,7 @@ public class MainView {
             }
             
          }else if(choose == 2) {
-            System.out.println(">> 1. 기업회원가입 2. 기업 로그인 3. 메인페이지");
+            System.out.println(">> 1.기업회원가입 2.기업 로그인 3.메인페이지");
             
             int choose3 = scan.nextInt();
             
@@ -61,7 +61,7 @@ public class MainView {
                 eLogin();   // 성공 시 기업 View 연동
             }
          }else if(choose == 3) {
-            System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
+            System.out.println(">> 1.우수기업 2.기업후기 3.메인페이지");
             int choose4 = scan.nextInt();
             
             if(choose4 == 1) {
@@ -92,7 +92,8 @@ public class MainView {
          }
          
          System.out.print("생년월일 : ");      String mdate = scan.next();
-         System.out.print("주소 : ");      String maddr = scan.next();
+         scan.nextLine();
+         System.out.print("주소 : ");      String maddr = scan.nextLine();
          
          MemberDto memberDto = new MemberDto();
          memberDto.setMid(mid);
