@@ -106,20 +106,20 @@ insert into apply( pno , mno , apass ) values ( '6' , '3' , true );
 # 후기관리
 create table review(
    mno int unsigned ,
-   eno int unsigned ,
+   pno int unsigned ,
    rno int unsigned auto_increment ,
    rcontent varchar(255) not null ,
    rrating int unsigned not null ,
     rdate datetime default now() ,
     constraint primary key ( rno ) ,
-   constraint foreign key ( eno ) references enterprise ( eno ),
+   constraint foreign key ( pno ) references post ( pno ),
    constraint foreign key ( mno ) references member ( mno )
 ); # table end
-insert into review( rrating , rcontent , eno , mno ) values ( '5' , '밥이 맛있어요.' , '6' , '5' );
-insert into review( rrating , rcontent , eno , mno ) values ( '4' , '돈을 많이 줘요.' , '2' , '4' );
-insert into review( rrating , rcontent , eno , mno ) values ( '2' , '가지마세요.' , '1' , '2' );
-insert into review( rrating , rcontent , eno , mno ) values ( '2' , '비추합니다.' , '1' , '3' );
-insert into review( rrating , rcontent , eno , mno ) values ( '5' , '좋아요.' , '2' , '3' );
+insert into review( rrating , rcontent , pno , mno ) values ( '5' , '밥이 맛있어요.' , '5' , '5' );
+insert into review( rrating , rcontent , pno , mno ) values ( '4' , '돈을 많이 줘요.' , '2' , '4' );
+insert into review( rrating , rcontent , pno , mno ) values ( '2' , '가지마세요.' , '1' , '2' );
+insert into review( rrating , rcontent , pno , mno ) values ( '2' , '비추합니다.' , '1' , '3' );
+insert into review( rrating , rcontent , pno , mno ) values ( '5' , '좋아요.' , '2' , '3' );
 
 
 -- ******* DML ******* --
