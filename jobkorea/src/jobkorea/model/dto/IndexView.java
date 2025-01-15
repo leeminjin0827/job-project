@@ -21,7 +21,7 @@ public class IndexView {
 		if(choose == 1) {
 			//ApplyView.getInstance().apply();
 		}else if(choose == 2) {
-			ReviewView.getinstance().run(loginMno);
+			ReviewView.getInstance().run(loginMno);
 		}else if (choose == 3) {
 			MainView.getInstance().eLogout();
 		}
