@@ -21,13 +21,13 @@ public class ReviewDao {
 	private ReviewDao() {
 		// 예외처리
 		try {
-		// 1) JDBC 클래스 드라이버 로드 : .Class.forName()
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		// 2) 설정한 경로 / 계정 / 비밀번호로 DB 서버 연동 시도 후 결과(구현체) 반환  
-		conn = DriverManager.getConnection(dburl,dbuser,dbpwd);
-		System.out.println(">> DB 연동 성공");
-		}catch (Exception e) {
-		System.out.println(">> DB 연동 실패 "+ e);
+			// 1) JDBC 클래스 드라이버 로드 : .Class.forName()
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// 2) 설정한 경로 / 계정 / 비밀번호로 DB 서버 연동 시도 후 결과(구현체) 반환  
+			conn = DriverManager.getConnection(dburl,dbuser,dbpwd);
+			System.out.println(">> DB 연동 성공");
+			}catch (Exception e) {
+			System.out.println(">> DB 연동 실패 "+ e);
 		} // catch end
 	}
 	public static ReviewDao getInstance() { return instance; }
@@ -51,7 +51,8 @@ public class ReviewDao {
 			if(result == 1) {return true;}
 		}catch(SQLException e) {System.out.println(e);}
 		return false;		
-	}
+	} // f rWrite end
+	
 	
 	
 	// 합격한 기업리스트
@@ -136,8 +137,20 @@ public class ReviewDao {
 		}catch(SQLException e) {System.out.println(e);}
 		return false;
 		
-	}
+	} // f rUpdate end
 	
+	
+	// 후기 삭제
+	public boolean rDelete(ReviewDto reviewDto) {
+		try {
+			String sql = "delete from review where rno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewDto.getRno());
+			int count = ps.executeUpdate();
+			if(count == 1) {return true;}
+		}catch(SQLException e) {System.out.println(e);}
+		return false;
+	} // f rDelete end
 
 
 	

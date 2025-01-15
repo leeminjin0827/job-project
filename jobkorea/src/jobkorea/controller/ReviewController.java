@@ -13,7 +13,19 @@ public class ReviewController {
 	public static ReviewController getInstance() { return instance; }
 	
 	// 후기 등록
-	public boolean rWrite(ReviewDto reviewDto, int loginMno, int pno) {
+	public boolean rWrite(ReviewDto reviewDto, int loginMno, int pno, ArrayList<Integer> array) {
+		boolean state = false;
+		for(int index = 0; index <= array.size()-1; index++) {
+			int ar = array.get(index);
+			if(ar == pno) {
+				state = true;
+				break;
+			} // if end
+		} // for end
+		if(state == false) {
+			return false;
+		} // if end
+		
 		boolean result = ReviewDao.getInstance().rWrite(reviewDto, loginMno, pno);
 		return result;
 	}
@@ -41,6 +53,10 @@ public class ReviewController {
 	
 	
 	// 후기 삭제
+	public boolean rDelete(ReviewDto reviewDto) {
+		boolean result = ReviewDao.getInstance().rDelete(reviewDto);
+		return result;
+	}
 	
 	
 
