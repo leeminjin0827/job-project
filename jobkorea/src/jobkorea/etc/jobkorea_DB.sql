@@ -141,6 +141,8 @@ delete from apply where ano = 1;
 -- 지원 수정 sample --
 update member set mpwd = '얍' , mname = '얍', mgender = true , mdate = '얍' , maddr = '얍' where mno = 1;
 select * from member;
+select * from post;
+select p.* , c.cname , e.id from post as p inner join category as c on p.cno = c.cno inner join enterprice as e on p.eno = e.eno;
 
 
 
