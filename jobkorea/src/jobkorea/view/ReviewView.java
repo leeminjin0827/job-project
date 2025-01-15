@@ -71,11 +71,13 @@ public class ReviewView {
 		ArrayList<HashMap<String, String>> passList = ReviewController.getInstance().rPassPrint(mno);
 		for(int index = 0; index <= passList.size()-1; index++) {
 			HashMap<String, String> i = passList.get(index);
+			System.out.printf("");
 			System.out.printf(
-								"지원번호 : " + i.get("지원번호") + "\n" +
-								"공고번호 : " + i.get("공고번호") + "\n" +
-								"기업명 : "  + i.get("기업명") + "\n" +
-								"공고명 : " + i.get("공고명") + "\n"
+								"지원번호 : " + i.get("지원번호") +"\n"+
+								"공고번호 : " + i.get("공고번호") +"\n"+
+								"기업명 : "  + i.get("기업명") +"\n"+
+								"공고명 : " + i.get("공고명") + "\n"+
+								"=====================\n"
 							);
 		} // for end
 	} // f rPassPrint end

@@ -40,6 +40,9 @@ public class ReviewController {
 	}
 	
 	
+	// 후기 삭제
+	
+	
 
 	
 } // class end
