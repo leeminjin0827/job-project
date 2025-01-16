@@ -16,6 +16,8 @@ public class ApplyController {
 	// 메소드
 	public static ApplyController getInstance() {
 		return instance;
+		
+		
 	}
 	// 싱글톤 e
 
