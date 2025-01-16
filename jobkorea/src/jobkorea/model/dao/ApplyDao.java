@@ -92,7 +92,7 @@ public class ApplyDao {
 	public boolean applyC(int choose , int choose2, int loginMno) {
 		
 		try {
-			String sql = "insert into apply(pno , mno) select ? , ? "; ///???//////
+			String sql = "insert into apply(pno , mno) select ? , ? "; 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, choose2);
 			ps.setInt(2, loginMno);
