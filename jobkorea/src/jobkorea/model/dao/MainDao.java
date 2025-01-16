@@ -90,11 +90,6 @@ public class MainDao {
 			catch( SQLException e ) { System.out.println( e ); }
 			return 0;
 		} // f end
- 	
-    // [3] 회원 로그아웃 메소드
-    public void mLogout() {
-    	
-    }
     
     
     
@@ -143,12 +138,7 @@ public class MainDao {
 		catch( SQLException e ) { System.out.println( e ); }
 		return 0;
 	} // f end
- 	
- 	
-    // [3] 기업 로그아웃 메소드
-    public void eLogout() {
-       
-    }
+
     
     
     // [1] 우수기업 R

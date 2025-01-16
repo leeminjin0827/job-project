@@ -91,20 +91,6 @@ public class MainView {
 	      System.out.print("이름 : ");		String mname = scan.next();
 	      System.out.print("성별(0.남/1.여) : ");		int gender = scan.nextInt();
 	      
-
-	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
-	      
-	      if(gender == 1) { // 
-
-	    	  
-	      }else if(gender == 0 ) {
-	    	  mgender = false;
-	    	  // System.out.println(mgender);
-	      }else {
-	    	  System.out.println(">> 성별 입력 시 유효한 값으로 입력하세요.");
-	      }
-
-     
 	      System.out.print("생년월일 : ");		String mdate = scan.next();
 	      scan.nextLine();	 // !입력값에서 띄어쓰기가 안넘어가서 추가했어요!
 	      System.out.print("주소 : ");		String maddr = scan.nextLine(); // next() -> nextLine() 으로 변경
@@ -113,11 +99,10 @@ public class MainView {
 	      memberDto.setMid(mid);
 	      memberDto.setMpwd(mpwd);
 	      memberDto.setMname(mname);
-	      memberDto.setMgender(mgender);
 	      memberDto.setMdate(mdate);
 	      memberDto.setMaddr(maddr);
 	     	      
-	      int result = MainController.getInstance().mSignUp(memberDto);
+	      int result = MainController.getInstance().mSignUp(memberDto, gender);
 
 	      if(result == 0) {
 	    	  System.out.println(">> 회원 회원가입 성공");
@@ -125,7 +110,9 @@ public class MainView {
 	    	  System.out.println(">> 아이디는 3 ~ 12 자리로 입력해주세요.");
 	      }else if (result == 2) {
 	    	  System.out.println(">> 비밀번호는 3 ~ 12 자리로 입력해주세요.");
-    	  }
+    	  }else if(result ==3) {
+    		  System.out.println(">> 성별 입력시 0 또는 1을 선택하세요.");
+   		  }
 
 	   }
 	 

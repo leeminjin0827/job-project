@@ -56,12 +56,13 @@ public class PostView {
 	// 1. 공고등록 메소드
 	public void pRegister( int loginEno) {
 	    System.out.println("\n[해당하는 카테고리의 번호를 입력하세요.]");	int cno = scan.nextInt();
-	    System.out.println("제목 : ");								String ptitle = scan.next();
-	    System.out.println("내용 : ");								String pcontent = scan.next();
-	    System.out.println("경력 : ");								String phistory = scan.next();
-	    System.out.println("모집인원 : ");							String pcount = scan.next();
-	    System.out.println("연봉 : ");								String psalary = scan.next();
-	    System.out.println("공고마감일 : ");							String pend = scan.next();
+	    scan.nextLine();
+	    System.out.println("제목 : ");								String ptitle = scan.nextLine();
+	    System.out.println("내용 : ");								String pcontent = scan.nextLine();
+	    System.out.println("경력 : ");								String phistory = scan.nextLine();
+	    System.out.println("모집인원 : ");							String pcount = scan.nextLine();
+	    System.out.println("연봉 : ");								String psalary = scan.nextLine();
+	    System.out.println("공고마감일 : ");							String pend = scan.nextLine();
 	    PostDto postDto = new PostDto( cno , ptitle , pcontent , phistory , pcount , psalary , pend );
 	    boolean result = PostController.getInstance().pRegister( postDto , loginEno );
 	    if( result ) { System.out.println("[공고등록 성공]"); }
@@ -71,12 +72,13 @@ public class PostView {
 	// 2. 공고수정 메소드
 	public void pUpdate( ArrayList<Integer> array ) {
 		System.out.println("\n[수정할 공고의 번호를 입력하세요.]");	int pno = scan.nextInt();
-	    System.out.println("제목 : ");							String ptitle = scan.next();
-	    System.out.println("내용 : ");							String pcontent = scan.next();
-	    System.out.println("경력 : ");							String phistory = scan.next();
-	    System.out.println("모집인원 : ");						String pcount = scan.next();
-	    System.out.println("연봉 : ");							String psalary = scan.next();
-	    System.out.println("공고마감일 : ");						String pend = scan.next();
+		scan.nextLine();
+	    System.out.println("제목 : ");							String ptitle = scan.nextLine();
+	    System.out.println("내용 : ");							String pcontent = scan.nextLine();
+	    System.out.println("경력 : ");							String phistory = scan.nextLine();
+	    System.out.println("모집인원 : ");						String pcount = scan.nextLine();
+	    System.out.println("연봉 : ");							String psalary = scan.nextLine();
+	    System.out.println("공고마감일 : ");						String pend = scan.nextLine();
 	    PostDto postDto = new PostDto();
 	    postDto.setPno(pno); 			postDto.setPtitle(ptitle);	postDto.setPcontent(pcontent);
 	    postDto.setPhistory(phistory);	postDto.setPcount(pcount);	postDto.setPsalary(psalary);

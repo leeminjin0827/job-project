@@ -31,7 +31,7 @@ public class MainController {
 
 	// [1] 일반 회원가입 메소드
 
- 	public int mSignUp(MemberDto memberDto) {
+ 	public int mSignUp(MemberDto memberDto, int gender) {
  		
  		if(memberDto.getMid().length() < 3 || memberDto.getMid().length() > 12 ) {
  			return 1;
@@ -39,6 +39,15 @@ public class MainController {
  		if(memberDto.getMpwd().length() < 3 || memberDto.getMpwd().length() > 20) {
  			return 2;
  		}
+ 		boolean mgender = false;
+ 		if(gender == 0) {
+ 			memberDto.setMgender(mgender);
+ 		}else if(gender == 1) {
+ 			mgender = true;
+ 			memberDto.setMgender(mgender);
+ 		}else if(gender > 1) {return 3;}
+ 		
+ 		
  		
 	    boolean result = MainDao.getinstance().mSignUp(memberDto);
 	    return 0;
