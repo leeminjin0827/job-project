@@ -30,7 +30,8 @@ public class MainController {
 	
 
 	// [1] 일반 회원가입 메소드
- 	public int mSignUp(MemberDto memberDto) {
+
+ 	public int mSignUp(MemberDto memberDto, int gender) {
  		
  		if(memberDto.getMid().length() < 3 || memberDto.getMid().length() > 12 ) {
  			return 1;
@@ -38,6 +39,15 @@ public class MainController {
  		if(memberDto.getMpwd().length() < 3 || memberDto.getMpwd().length() > 20) {
  			return 2;
  		}
+ 		boolean mgender = false;
+ 		if(gender == 0) {
+ 			memberDto.setMgender(mgender);
+ 		}else if(gender == 1) {
+ 			mgender = true;
+ 			memberDto.setMgender(mgender);
+ 		}else if(gender > 1) {return 3;}
+ 		
+ 		
  		
 	    boolean result = MainDao.getinstance().mSignUp(memberDto);
 	    return 0;
@@ -66,6 +76,7 @@ public class MainController {
     ///////
     
     // [1] 기업 회원가입 메소드
+
     public int eSignUp(EnterpriseDto enterpriseDto) {
     	// 유효성 검사
     	if(enterpriseDto.getEid().length() < 3 || enterpriseDto.getEid().length() > 12 ) {
@@ -80,13 +91,13 @@ public class MainController {
 	}
     
     // [2] 기업 회원 로그인 
- 	public boolean eLogin( EnterpriseDto enterpriseDto ) { // memberDto 를 매개변수로 가져옴
+ 	public int eLogin( EnterpriseDto enterpriseDto ) { // memberDto 를 매개변수로 가져옴
  		int result = MainDao.getinstance().eLogin(enterpriseDto); // Dao에서 정보가 있으면 회원번호를 반환 없으면 0반환
  		if( result > 0 ) { // 로그인 성공 시 true , 실패 시 false 반환
- 			loginMno = result; // 성공 시 회원번호를 loginMno에 저장
- 			return true; 
+ 			loginEno = result; // 성공 시 회원번호를 loginMno에 저장
+ 			return loginEno;
  		}else {
- 			return false; 
+ 			return 0;
  		} // if end
  	} // f end
  	

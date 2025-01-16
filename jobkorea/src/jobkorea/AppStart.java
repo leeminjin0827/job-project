@@ -10,4 +10,3 @@ public class AppStart {
 		MainView.getInstance().run();
 	} // m end
 } // c end
-

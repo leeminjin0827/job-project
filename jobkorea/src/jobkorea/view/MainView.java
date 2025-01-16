@@ -61,7 +61,10 @@ public class MainView {
 				if(choose3 == 1) {
 					eSignUp();
 				}else if(choose3 == 2) {
-					 eLogin();	// 성공 시 기업 View 연동
+					int loginEno = eLogin();
+					if(loginEno > 0) { // 성공 시 기업 View 연동 
+						PostView.getInstance().pIndex(loginEno);	
+					}
 				}
 			}else if(choose == 3) {
 				System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
@@ -88,20 +91,6 @@ public class MainView {
 	      System.out.print("이름 : ");		String mname = scan.next();
 	      System.out.print("성별(0.남/1.여) : ");		int gender = scan.nextInt();
 	      
-
-	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
-	      
-	      if(gender == 1) { // 
-
-	    	  
-	      }else if(gender == 0 ) {
-	    	  mgender = false;
-	    	  // System.out.println(mgender);
-	      }else {
-	    	  System.out.println(">> 성별 입력 시 유효한 값으로 입력하세요.");
-	      }
-
-     
 	      System.out.print("생년월일 : ");		String mdate = scan.next();
 	      scan.nextLine();	 // !입력값에서 띄어쓰기가 안넘어가서 추가했어요!
 	      System.out.print("주소 : ");		String maddr = scan.nextLine(); // next() -> nextLine() 으로 변경
@@ -110,11 +99,10 @@ public class MainView {
 	      memberDto.setMid(mid);
 	      memberDto.setMpwd(mpwd);
 	      memberDto.setMname(mname);
-	      memberDto.setMgender(mgender);
 	      memberDto.setMdate(mdate);
 	      memberDto.setMaddr(maddr);
 	     	      
-	      int result = MainController.getInstance().mSignUp(memberDto);
+	      int result = MainController.getInstance().mSignUp(memberDto, gender);
 
 	      if(result == 0) {
 	    	  System.out.println(">> 회원 회원가입 성공");
@@ -122,7 +110,9 @@ public class MainView {
 	    	  System.out.println(">> 아이디는 3 ~ 12 자리로 입력해주세요.");
 	      }else if (result == 2) {
 	    	  System.out.println(">> 비밀번호는 3 ~ 12 자리로 입력해주세요.");
-    	  }
+    	  }else if(result ==3) {
+    		  System.out.println(">> 성별 입력시 0 또는 1을 선택하세요.");
+   		  }
 
 	   }
 	 
@@ -187,7 +177,7 @@ public class MainView {
 		} 
    }
     // [2] 기업 로그인 메소드
- 	public void eLogin() {
+ 	public int eLogin() {
  		System.out.print("아이디 : ");	String eid = scan.next();
  		System.out.print("비밀번호 : ");	String epwd = scan.next();
  		// 객체화
@@ -195,14 +185,14 @@ public class MainView {
  	    enterpriseDto.setEid(eid);
  	    enterpriseDto.setEpwd(epwd);
  	    // 컨트롤러에게 전달하고 응답 받기
- 	    boolean result = MainController.getInstance().eLogin(enterpriseDto);
+ 	    int result = MainController.getInstance().eLogin(enterpriseDto);
  	    // 응답에 따른 처리
- 	    if( result ) {
+ 	    if( result > 0 ) {
  	    	System.out.println(">> 로그인 성공");
- 	    	// EnterpriscView 메인메뉴 메소드 호출
- 	    	//EnterpriseView.getinstance().post();
+ 	    	return result;
  	    	}
  	    else { System.out.println(">> 회원정보가 없습니다."); }
+ 	    return 0;
  	}
  	
     // [3] 기업 로그아웃 메소드
