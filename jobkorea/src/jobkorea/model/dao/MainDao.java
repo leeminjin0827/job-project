@@ -38,7 +38,7 @@ public class MainDao {
 		System.out.println(">> DB 연동 실패 "+ e);
 		} // catch end
 	} // f end
-	public static MainDao getInstance() { return instance; }
+	public static MainDao getinstance() { return instance; }
 	// - 싱글톤
 	
 	// [1] 일반 회원가입 SQL 처리 메소드 
