@@ -24,7 +24,7 @@ public class IndexView {
 			if(choose == 1) {
 				ApplyView.getInstance().apply(loginMno);
 			}else if(choose == 2) {
-				// 은서 님 개인 view 랑 연동
+				ReviewView.getInstance().run(loginMno);
 			}else if (choose == 3) {
 				myInfo(loginMno);
 			}else if(choose == 4) {

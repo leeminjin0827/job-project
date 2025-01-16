@@ -91,7 +91,7 @@ create table apply(
     mno int unsigned ,
     apass boolean not null default false, 
     constraint primary key ( ano ) ,
-    constraint foreign key ( pno ) references post(pno) on update cascade on delete cascade,
+   constraint foreign key ( pno ) references post(pno) on update cascade on delete cascade,
     constraint foreign key ( mno ) references member(mno) on update cascade on delete cascade
 ); # table end
 insert into apply( pno , mno , apass ) values ( '1' , '5' , true );
@@ -125,60 +125,3 @@ insert into review( rrating , rcontent , pno , mno ) values ( '5' , '좋아요.'
 select * from review;
 -- ******* DML ******* --
 -- 우수 기업 리스트 sample --
-select e.ename , avg(r.rrating) as ravg from review r left join post p on  r.pno = p.pno join enterprise e on p.eno = e.eno group by e.ename order by ravg desc ;
--- 기업별 후기 리스트 sample --
-select e.ename,  r.rcontent, r.rrating from review r join post p on r.pno = p.pno  join enterprise e on p.eno = e.eno  where e.ename = '(주)코비엔';  
--- 지원리스트 출력 sample --
-select a.ano, p.ptitle , p.pend , a.apass , a.ano from apply a join post p on a.pno = p.pno  where a.mno = '3' ; 
--- 카테고리리스트 sample --
-select * from category order by cno asc;
--- 입력값에 해당되는 공고리스트 sample --
-select p.pno , p.ptitle , p.pcontent ,p.phistory , p.pcount , p.psalary , p.pstart , p.pend , c.cname
-	from post p join category c on p.cno = c.cno where p.cno = '8';
--- 로그인된 회원번호로 공고 지원 sample --
-# insert into apply(pno, mno) select ?, ? from category where cno = ?;
-### eno pno 로 다 수정
-# ??insert into apply(pno , mno) select 1, 1 from  post p  join category c on p.cno = c.cno where p.cno = '1';
-
--- 지원 삭제 sample --
-delete from apply where ano = 1;
--- 지원 수정 sample --
-update member set mpwd = '얍' , mname = '얍', mgender = true , mdate = '얍' , maddr = '얍' where mno = 1;
-select * from member;
--- 공고리스트 전체 출력 sample --
-select p.pno , p.ptitle, p.pcontent , p.phistory, p.pcount , p.psalary, p.pstart, p.pend , c.cname , e.ename 
-	from post p join category c on p.cno = c.cno join enterprise e on p.eno = e.eno
-		where p.eno = '5';
-select * from apply;
-
-
--- 합격 리스트 sample --
-select a.ano , p.ptitle , e.ename , p.pno from apply as a join post as p on a.pno = p.pno join member as m on a.mno = m.mno join enterprise e on p.eno = e.eno 
-	where a.apass = true and a.mno = 3;
-
--- 후기 리스트 sample --
-select r.rno, e.ename ,  r.rcontent , r.rrating , r.rdate from review r join post p on r.pno = p.pno join enterprise e on p.eno = e.eno join member m on r.mno = m.mno 
-	where r.mno = 3;
-
--- 공고 등록 sample --
-insert into post (ptitle, pcontent, phistory , pcount, psalary ,pend , eno) values ('d','s','s','s','s','2025-12-12', 1);
-select * from post;
--- 내정보 조회 --
-select mid, mpwd , mname , mgender, mdate, maddr from member where mno = 1;
-
--- 후기 등록 sample --
-insert into review (rcontent , rrating, pno, mno) values ('aa','3', '1','1');
-select * from review; 
-
-select * from apply;
-update apply set apass = not apass where ano = 2;
-select * from apply;
-
-select * from post;
-delete from post where pno = 1;
-
-select * from review;
-select * from member;
-select * from post;
-insert into review(rrating, rcontent, mno , pno) value ('1','1','1', '1');
-
