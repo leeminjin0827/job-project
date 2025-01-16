@@ -63,7 +63,7 @@ public class ApplyView {
 			try {
 				pno.add(Integer.parseInt(pDto.get("공고번호")));
 			} catch (NumberFormatException e) {
-			    System.out.println("형 변환 오류 " + e);
+			    System.out.println("공고 번호 형 변환 오류 " + e);
 			}
 		}
 		System.out.println();
@@ -100,7 +100,7 @@ public class ApplyView {
 			try {
 				ano.add(Integer.parseInt(aDto.get("지원번호")));
 			}catch (NumberFormatException e) {
-				System.out.println("11형변환 오류 " + e);
+				System.out.println("지원번호 형변환 오류 " + e);
 			}
 		}
 		System.out.println();
