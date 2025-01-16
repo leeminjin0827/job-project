@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 
 
+
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import jobkorea.controller.MainController;
@@ -33,6 +35,7 @@ public class MainView {
 	public void run() {
 		
 		while(true) {
+			
 			System.out.println(">> 1.일반 2.기업 3.취업");
 			int choose = scan.nextInt();
 
@@ -73,7 +76,10 @@ public class MainView {
 					reviewList();
 				}
 			}
+			
 		}
+		
+		
 	}
 	// 회원가입 로그인 결과를 boolean 으로 반환받아 변수에 반환값을 저장 -> 성공 : 다음 view 연동 실패 : break;
 
@@ -84,18 +90,24 @@ public class MainView {
 	      System.out.print("비밀번호 : ");		String mpwd = scan.next();
 	      System.out.print("이름 : ");		String mname = scan.next();
 	      System.out.print("성별(0.남/1.여) : ");		int gender = scan.nextInt();
+	      
+
 	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
 	      
 	      if(gender == 1) { // 
-	    	  mgender = true; // 1 = 여성(true)
-	    	  // System.out.println(mgender);
+
+	    	  
 	      }else if(gender == 0 ) {
 	    	  mgender = false;
 	    	  // System.out.println(mgender);
+	      }else {
+	    	  System.out.println(">> 성별 입력 시 유효한 값으로 입력하세요.");
 	      }
-	      
+
+     
 	      System.out.print("생년월일 : ");		String mdate = scan.next();
-	      System.out.print("주소 : ");		String maddr = scan.next();
+	      scan.nextLine();	 // !입력값에서 띄어쓰기가 안넘어가서 추가했어요!
+	      System.out.print("주소 : ");		String maddr = scan.nextLine(); // next() -> nextLine() 으로 변경
 	      
 	      MemberDto memberDto = new MemberDto();
 	      memberDto.setMid(mid);
@@ -105,12 +117,15 @@ public class MainView {
 	      memberDto.setMdate(mdate);
 	      memberDto.setMaddr(maddr);
 	     	      
-	      boolean result = MainController.getInstance().mSignUp(memberDto);
-	      if(result) {
-	    	  System.out.println("[회원가입 성공]");
-	      }else {
-	    	  System.out.println("[회원가입 실패]");
-	      }  
+	      int result = MainController.getInstance().mSignUp(memberDto);
+
+	      if(result == 0) {
+	    	  System.out.println(">> 회원 회원가입 성공");
+	      }else if(result == 1){
+	    	  System.out.println(">> 아이디는 3 ~ 12 자리로 입력해주세요.");
+	      }else if (result == 2) {
+	    	  System.out.println(">> 비밀번호는 3 ~ 12 자리로 입력해주세요.");
+    	  }
 
 	   }
 	 
@@ -150,7 +165,7 @@ public class MainView {
    
     
     
-    
+    // [1] 기업 회원가입 메소드
     public void eSignUp() {
 		System.out.println("===== 기업 회원가입 =====");
 		System.out.print("아이디 : ");		String eid = scan.next();
@@ -164,12 +179,15 @@ public class MainView {
 		enterpriseDto.setEname(ename);
 		enterpriseDto.setEaddr(eaddr);
 			   
-		boolean result = MainController.getInstance().eSignUp(enterpriseDto);
-		if(result) {
-		System.out.println("[회원가입 성공]");
-		}else {
-		System.out.println("[회원가입 실패]");
-      } 
+		int result = MainController.getInstance().eSignUp(enterpriseDto);
+		
+		if(result == 0) {
+			System.out.println(">> 기업 회원가입 성공");
+		}else if(result == 1){
+			System.out.println(">> 아이디는 3 ~ 12 자리로 입력해주세요.");
+		}else if (result == 2) {
+			System.out.println(">> 비밀번호는 3 ~ 12 자리로 입력해주세요.");
+		} 
    }
     // [2] 기업 로그인 메소드
  	public int eLogin() {
@@ -238,5 +256,6 @@ public class MainView {
 	}
     
 }
+
 
 

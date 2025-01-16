@@ -155,8 +155,7 @@ public class MainDao {
     public ArrayList<HashMap<String, String>>  bestList() {
     	ArrayList<HashMap<String, String>> bList = new ArrayList<>();
     	try {
-    		String sql = "select e.ename , avg(r.rrating) as ravg from review r left join enterprise e "
-    					+ "on  r.eno = e.eno group by r.eno order by ravg desc";
+    		String sql = "select e.ename , avg(r.rrating) as ravg from review r left join post p on  r.pno = p.pno join enterprise e on p.eno = e.eno group by e.ename order by ravg desc";
     		PreparedStatement ps = conn.prepareStatement(sql);
     		ResultSet rs = ps.executeQuery();
     		
@@ -181,8 +180,7 @@ public class MainDao {
     public ArrayList<HashMap<String, String>>  reviewList(String ename) {
     	ArrayList<HashMap<String, String>> rList = new ArrayList<>();
 		try {
-			String sql = "select e.ename,  r.rcontent, r.rrating from review r join enterprise e "
-						+ "on r.eno = e.eno  where e.ename = ?";
+			String sql = "select e.ename,  r.rcontent, r.rrating from review r join post p on r.pno = p.pno  join enterprise e on p.eno = e.eno  where e.ename = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, ename);
 			ResultSet rs = ps.executeQuery();
