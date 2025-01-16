@@ -116,11 +116,14 @@ public class MainView {
 	      memberDto.setMaddr(maddr);
 	     	      
 	      int result = MainController.getInstance().mSignUp(memberDto);
+
 	      if(result == 0) {
 	    	  System.out.println(">> 회원 회원가입 성공");
 	      }else if(result == 1){
-	    	  System.out.println(">> 회원 회원가입 실패");
-	      }  
+	    	  System.out.println(">> 아이디는 3 ~ 12 자리로 입력해주세요.");
+	      }else if (result == 2) {
+	    	  System.out.println(">> 비밀번호는 3 ~ 12 자리로 입력해주세요.");
+    	  }
 
 	   }
 	 
@@ -174,12 +177,15 @@ public class MainView {
 		enterpriseDto.setEname(ename);
 		enterpriseDto.setEaddr(eaddr);
 			   
-		boolean result = MainController.getInstance().eSignUp(enterpriseDto);
-		if(result) {
-		System.out.println(">> 기업 회원가입 성공");
-		}else {
-		System.out.println(">> 기업 회원가입 실패");
-      } 
+		int result = MainController.getInstance().eSignUp(enterpriseDto);
+		
+		if(result == 0) {
+			System.out.println(">> 기업 회원가입 성공");
+		}else if(result == 1){
+			System.out.println(">> 아이디는 3 ~ 12 자리로 입력해주세요.");
+		}else if (result == 2) {
+			System.out.println(">> 비밀번호는 3 ~ 12 자리로 입력해주세요.");
+		} 
    }
     // [2] 기업 로그인 메소드
  	public void eLogin() {

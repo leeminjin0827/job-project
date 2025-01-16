@@ -31,14 +31,14 @@ public class MainController {
 
 	// [1] 일반 회원가입 메소드
  	public int mSignUp(MemberDto memberDto) {
- 		System.out.println(memberDto.getMid());
- 		// 유효성 검사 안된!!!!
- 		if(memberDto.getMid().length() < 3 && memberDto.getMid().length() > 12 ) {
+ 		
+ 		if(memberDto.getMid().length() < 3 || memberDto.getMid().length() > 12 ) {
  			return 1;
  		}
- 		if(memberDto.getMpwd().length() < 3 && memberDto.getMpwd().length() > 20) {
+ 		if(memberDto.getMpwd().length() < 3 || memberDto.getMpwd().length() > 20) {
  			return 2;
  		}
+ 		
 	    boolean result = MainDao.getinstance().mSignUp(memberDto);
 	    return 0;
 	}
@@ -66,16 +66,17 @@ public class MainController {
     ///////
     
     // [1] 기업 회원가입 메소드
-    public boolean eSignUp(EnterpriseDto enterpriseDto) {
+    public int eSignUp(EnterpriseDto enterpriseDto) {
     	// 유효성 검사
-    	if(enterpriseDto.getEid().length() < 3 && enterpriseDto.getEid().length() > 12 ) {
-    		return false;
+    	if(enterpriseDto.getEid().length() < 3 || enterpriseDto.getEid().length() > 12 ) {
+    		return 1;
     	}
-    	if(enterpriseDto.getEpwd().length() < 3&& enterpriseDto.getEpwd().length() > 12) {
-    		return false;
+    	if(enterpriseDto.getEpwd().length() < 3 || enterpriseDto.getEpwd().length() > 12) {
+    		return 2;
     	}
-	      boolean result = MainDao.getinstance().eSignUp(enterpriseDto);
-	      return result;
+	    
+    	boolean result = MainDao.getinstance().eSignUp(enterpriseDto);
+	    return 0;
 	}
     
     // [2] 기업 회원 로그인 
