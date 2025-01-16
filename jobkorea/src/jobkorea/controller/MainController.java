@@ -30,16 +30,17 @@ public class MainController {
 	
 
 	// [1] 일반 회원가입 메소드
- 	public boolean mSignUp(MemberDto memberDto) {
- 		// 유효성 검사
+ 	public int mSignUp(MemberDto memberDto) {
+ 		System.out.println(memberDto.getMid());
+ 		// 유효성 검사 안된!!!!
  		if(memberDto.getMid().length() < 3 && memberDto.getMid().length() > 12 ) {
- 			return false;
+ 			return 1;
  		}
  		if(memberDto.getMpwd().length() < 3 && memberDto.getMpwd().length() > 20) {
- 			return false;
+ 			return 2;
  		}
-	      boolean result = MainDao.getinstance().mSignUp(memberDto);
-	      return result;
+	    boolean result = MainDao.getinstance().mSignUp(memberDto);
+	    return 0;
 	}
 	
     // * 로그인 번호 저장

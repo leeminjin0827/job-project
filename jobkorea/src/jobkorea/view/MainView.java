@@ -115,10 +115,10 @@ public class MainView {
 	      memberDto.setMdate(mdate);
 	      memberDto.setMaddr(maddr);
 	     	      
-	      boolean result = MainController.getInstance().mSignUp(memberDto);
-	      if(result) {
+	      int result = MainController.getInstance().mSignUp(memberDto);
+	      if(result == 0) {
 	    	  System.out.println(">> 회원 회원가입 성공");
-	      }else {
+	      }else if(result == 1){
 	    	  System.out.println(">> 회원 회원가입 실패");
 	      }  
 
