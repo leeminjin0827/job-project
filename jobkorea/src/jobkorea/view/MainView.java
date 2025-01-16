@@ -92,13 +92,12 @@ public class MainView {
 	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
 	      
 	      if(gender == 1) { // 
-	    	  mgender = true; // 1 = 여성(true)
-	    	  // System.out.println(mgender);
+
+	    	  
 	      }else if(gender == 0 ) {
 	    	  mgender = false;
 	    	  // System.out.println(mgender);
 	      }else {
-		      /// 성별 입력 시 0 ,1 외 숫자 입력 시 남성 출력되는 거 해결하기 -> boolean 으로 설계해서 유효성검사 못할지도.....
 	    	  System.out.println(">> 성별 입력 시 유효한 값으로 입력하세요.");
 	      }
 
