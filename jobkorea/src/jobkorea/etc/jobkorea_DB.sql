@@ -67,8 +67,8 @@ create table post(
     cno int unsigned,
     eno int unsigned,
     constraint primary key (pno),
-    constraint foreign key(cno) references category (cno),
-    constraint foreign key(eno) references enterprise (eno)
+    constraint foreign key(cno) references category (cno) on update cascade on delete cascade,
+    constraint foreign key(eno) references enterprise (eno) on update cascade on delete cascade
 );
 insert into post (ptitle,pcontent, phistory, pcount,psalary, pend, cno , eno) 
 values('국민은행','JAVA / 클라우드 유경험자','경력무관','0명','회사내규에 따름','2025-02-01','8','6');
@@ -92,8 +92,8 @@ create table apply(
     mno int unsigned ,
     apass boolean not null default false, ###
     constraint primary key ( ano ) ,
-    constraint foreign key ( pno ) references post(pno) ,
-    constraint foreign key ( mno ) references member(mno)
+    constraint foreign key ( pno ) references post(pno)  on update cascade on delete cascade,
+    constraint foreign key ( mno ) references member(mno) on update cascade on delete cascade
 ); # table end
 insert into apply( pno , mno , apass ) values ( '1' , '5' , true );
 insert into apply( pno , mno , apass ) values ( '1' , '4' , false );
@@ -112,8 +112,8 @@ create table review(
    rrating int unsigned not null ,
     rdate datetime default now() ,
     constraint primary key ( rno ) ,
-   constraint foreign key ( eno ) references enterprise ( eno ),
-   constraint foreign key ( mno ) references member ( mno )
+   constraint foreign key ( eno ) references enterprise ( eno )  on update cascade on delete cascade,
+   constraint foreign key ( mno ) references member ( mno )  on update cascade on delete cascade
 ); # table end
 insert into review( rrating , rcontent , eno , mno ) values ( '5' , '밥이 맛있어요.' , '6' , '5' );
 insert into review( rrating , rcontent , eno , mno ) values ( '4' , '돈을 많이 줘요.' , '2' , '4' );
@@ -137,13 +137,22 @@ select p.pno , p.ptitle , p.pcontent ,p.phistory , p.pcount , p.psalary , p.psta
 -- 로그인된 회원번호로 공고 지원 sample --
 insert into apply(pno, mno) values (1,1);
 -- 지원 삭제 sample --
-delete from apply where ano = 1;
+-- delete from apply where ano = 3;
 -- 지원 수정 sample --
 update member set mpwd = '얍' , mname = '얍', mgender = true , mdate = '얍' , maddr = '얍' where mno = 1;
-select * from member;
+-- select * from member;
 select * from post;
-select p.* , c.cname , e.id from post as p inner join category as c on p.cno = c.cno inner join enterprice as e on p.eno = e.eno;
+select * from apply;
+-- 공고 개별 조회 --
+ 	select p.* , c.cname , e.ename
+		from post as p inner join category as c on p.cno = c.cno
+ 			inner join enterprise as e on p.eno = e.eno where pno = 3;
 
+	select a.ano , p.ptitle , m.mname
+		from apply as a inner join post as p on a.pno = p.pno
+			inner join member as m on a.mno = m.mno where eno = 1;
 
+-- 지원 수정 --
+-- update apply set apass = not apass where ano = 4;
 
 

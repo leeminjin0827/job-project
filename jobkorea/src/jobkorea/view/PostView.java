@@ -35,13 +35,13 @@ public class PostView {
 				System.out.println("1.삭제 2.취소");
 				int choose1 = scan.nextInt();
 				if( choose1 == 1 ) {
-					ListView.getInstance().pList( loginEno );
-					pDelete(); }
+					ArrayList<Integer> array = ListView.getInstance().pList( loginEno );
+					pDelete( array ); }
 				else if( choose == 2 ) { break; }
 			}
 			else if( choose == 4 ) { // 4
-				ListView.getInstance().aList( loginEno );
-				pCheck();
+				ArrayList<Integer> array = ListView.getInstance().aList( loginEno ); 
+				pCheck( array );
 			}
 			else if( choose == 5 ) { // 5
 				MainView.getInstance().eLogout();
@@ -70,7 +70,6 @@ public class PostView {
 	
 	// 2. 공고수정 메소드
 	public void pUpdate( ArrayList<Integer> array ) {
-		System.out.println(array);
 		System.out.println("\n[수정할 공고의 번호를 입력하세요.]");	int pno = scan.nextInt();
 	    System.out.println("제목 : ");							String ptitle = scan.next();
 	    System.out.println("내용 : ");							String pcontent = scan.next();
@@ -88,21 +87,21 @@ public class PostView {
 	} // f end
 	
 	// 3. 공고삭제 메소드
-	public void pDelete( ) {
+	public void pDelete( ArrayList<Integer> array ) {
 		System.out.println("[삭제할 공고 번호를 입력하세요.]");
 		int pno = scan.nextInt();
-		boolean result = PostController.getInstance().pDelete( pno );
+		boolean result = PostController.getInstance().pDelete( array , pno );
 		if( result ) { System.out.println("삭제 성공"); }
 		else { System.out.println("삭제 실패"); }
 	} // f end
 	
 	// 4. 지원관리 메소드
-	public void pCheck() {
+	public void pCheck( ArrayList<Integer> array ) {
 		System.out.println("[합격 여부를 변경할 지원 번호를 입력하세요.]");
 		int ano = scan.nextInt();
-		boolean result = PostController.getInstance().pCheck( ano );
-		if( result ) { System.out.println("합격 처리 완료"); }
-		else { System.out.println("합격 처리 실패"); }
+		boolean result = PostController.getInstance().pCheck( array , ano );
+		if( result ) { System.out.println("변경 완료"); }
+		else { System.out.println("변경 실패"); }
 	} // f end
 	
 	// 5. 내정보보기 메소드

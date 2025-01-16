@@ -31,7 +31,10 @@ public class ListController {
 	
 	// [3] 지원 리스트 출력
 	public ArrayList<HashMap<String,String>> aList( int loginEno ){
-		return ListDao.getInstance().aList(loginEno);
+		ArrayList<HashMap<String , String>> aList = ListDao.getInstance().aList(loginEno);
+//		return ListDao.getInstance().aList(loginEno);
+		return aList;
+		
 	}
 }
 
