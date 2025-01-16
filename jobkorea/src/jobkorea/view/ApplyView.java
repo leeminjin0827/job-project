@@ -67,7 +67,8 @@ public class ApplyView {
 			}
 		}
 		System.out.println();
-		System.out.println(pno);
+
+		
 		System.out.print(">> 지원할 공고 번호 : ");
 		int choose2 = scan.nextInt();
 		
@@ -88,6 +89,7 @@ public class ApplyView {
 		
 		// 유효성 검사를 위한 ArrayList
 		ArrayList<Integer> ano = new ArrayList<Integer>();
+		
 		System.out.println();
 		for(int i = 0; i < aList.size(); i++) {
 			HashMap<String, String> aDto = aList.get(i);

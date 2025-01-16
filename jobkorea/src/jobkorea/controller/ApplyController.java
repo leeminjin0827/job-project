@@ -56,6 +56,9 @@ public class ApplyController {
 	}
 	// [3] 정보 수정 -> 비밀번호 / 이름 / 성별 / 생년월일 / 주소
 	public boolean applyU(MemberDto memberDto,  int loginMno) {
+		if(memberDto.getMpwd().length() < 3 || memberDto.getMpwd().length() > 12) {
+			return false;
+		}
 		boolean result = ApplyDao.getInstance().applyU(memberDto,loginMno);
 		
 		return result;
