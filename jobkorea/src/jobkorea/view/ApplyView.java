@@ -96,9 +96,9 @@ public class ApplyView {
 			
 			// Integer 타입에 담기 위해 형 변환 -> 변환 오류 시 예외처리
 			try {
-				ano.add(Integer.parseInt(aDto.get("공고번호")));
+				ano.add(Integer.parseInt(aDto.get("지원번호")));
 			}catch (NumberFormatException e) {
-				System.out.println("형변환 오류 " + e);
+				System.out.println("11형변환 오류 " + e);
 			}
 		}
 		System.out.println();
@@ -121,10 +121,12 @@ public class ApplyView {
 		}else if (gender == 1)  {
 			 mgender = true;
 		}
+
 		System.out.print(">> 수정할 생년월일 : ");
 		String mdate = scan.next();
+		scan.nextLine();
 		System.out.print(">> 수정할 주소 : ");
-		String maddr = scan.next();
+		String maddr = scan.nextLine();
 		
 		MemberDto memberDto = new MemberDto(mpwd,mname,mgender,mdate,maddr);
 		
