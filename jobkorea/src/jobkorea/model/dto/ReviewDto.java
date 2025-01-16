@@ -11,6 +11,11 @@ public class ReviewDto {
 	// 생성자
 	public ReviewDto() {}
 	
+	public ReviewDto(int rrating , String rcontent) {
+		super();
+		this.rrating = rrating;
+		this.rcontent = rcontent;
+	}
 	
 	public ReviewDto(int rno, int rrating, String rcontent, String rdate, int eno, int mno) {
 		super();
@@ -69,6 +74,7 @@ public class ReviewDto {
 		this.mno = mno;
 	}
 
+	
 	// toString
 	@Override
 	public String toString() {
