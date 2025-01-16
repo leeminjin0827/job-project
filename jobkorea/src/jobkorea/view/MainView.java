@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import jobkorea.controller.MainController;
@@ -34,6 +35,7 @@ public class MainView {
 	public void run() {
 		
 		while(true) {
+			
 			System.out.println(">> 1.일반 2.기업 3.취업");
 			int choose = scan.nextInt();
 
@@ -71,7 +73,10 @@ public class MainView {
 					reviewList();
 				}
 			}
+			
 		}
+		
+		
 	}
 	// 회원가입 로그인 결과를 boolean 으로 반환받아 변수에 반환값을 저장 -> 성공 : 다음 view 연동 실패 : break;
 
@@ -83,6 +88,7 @@ public class MainView {
 	      System.out.print("이름 : ");		String mname = scan.next();
 	      System.out.print("성별(0.남/1.여) : ");		int gender = scan.nextInt();
 	      
+
 	      boolean mgender = false; // 0 = 남성(false) / 기본값 설정
 	      
 	      if(gender == 1) { // 
@@ -96,9 +102,10 @@ public class MainView {
 	    	  System.out.println(">> 성별 입력 시 유효한 값으로 입력하세요.");
 	      }
 
-	      
+     
 	      System.out.print("생년월일 : ");		String mdate = scan.next();
-	      System.out.print("주소 : ");		String maddr = scan.next();
+	      scan.nextLine();	 // !입력값에서 띄어쓰기가 안넘어가서 추가했어요!
+	      System.out.print("주소 : ");		String maddr = scan.nextLine(); // next() -> nextLine() 으로 변경
 	      
 	      MemberDto memberDto = new MemberDto();
 	      memberDto.setMid(mid);

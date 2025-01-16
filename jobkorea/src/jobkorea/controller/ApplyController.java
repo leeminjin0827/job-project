@@ -29,7 +29,20 @@ public class ApplyController {
 	}
 	
 	// [1] 지원
-	public boolean applyC(int choose , int choose2, int loginMno) {
+	public boolean applyC(int choose , int choose2, int loginMno, ArrayList<Integer> pno) {
+		
+		boolean state = false;
+		for(int i = 0; i < pno.size(); i++) {
+			int j = pno.get(i);
+			
+			if(j == choose2) {
+				state = true;
+				break;
+			}
+		}
+		if(state == false) {
+			return false;
+		}
 		boolean result = ApplyDao.getInstance().applyC(choose, choose2, loginMno);
 		return result;
 	}
@@ -48,7 +61,20 @@ public class ApplyController {
 		return result;
 	}
 	// [4] 지원 삭제 
-	public boolean applyD(int choose ) {
+	public boolean applyD(int choose , ArrayList<Integer> ano) {
+		// 유효성 검사의 상태를 저장하기 위한 임시 변수
+		boolean state = false;
+		
+		for(int i = 0; i < ano.size(); i++) {
+			int j = ano.get(i);
+			if(j == choose) {
+				state = true;
+			}
+		}
+		
+		if(state == false) {
+			return false;
+		}
 		boolean result = ApplyDao.getInstance().applyD(choose);
 		
 		return result;
