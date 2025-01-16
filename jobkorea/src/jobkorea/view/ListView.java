@@ -1,6 +1,8 @@
 package jobkorea.view;
 
+
 import java.util.ArrayList;
+
 import java.util.HashMap;
 
 import jobkorea.controller.ListController;

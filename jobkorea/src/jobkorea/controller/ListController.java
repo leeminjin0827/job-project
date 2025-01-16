@@ -1,5 +1,6 @@
 package jobkorea.controller;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,9 +22,10 @@ public class ListController {
 		return cList;
 	}
 	// [2] 공고 리스트 출력
-	public ArrayList<HashMap<String , String>> pList() {
+	public ArrayList<HashMap<String, String>> pList() {
 		ArrayList<HashMap<String , String>> pList = ListDao.getInstance().pList();
 		
 		return pList;
 	}
 }
+

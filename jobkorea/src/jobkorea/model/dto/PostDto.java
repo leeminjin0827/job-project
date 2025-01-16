@@ -111,11 +111,4 @@ public class PostDto {
 				+ ", pcount=" + pcount + ", psalary=" + psalary + ", pstart=" + pstart + ", pend=" + pend + ", cno="
 				+ cno + ", eno=" + eno + "]";
 	}
-
-
-	
-	
-	
-	
-	
 }

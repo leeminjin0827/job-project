@@ -1,6 +1,7 @@
 package jobkorea.model.dto;
 
 public class EnterpriseDto {
+
 	   private int eno;
 	   private String eid;
 	   private String epwd;
@@ -65,4 +66,5 @@ public class EnterpriseDto {
 	   }
 	   
 	   
+
 }

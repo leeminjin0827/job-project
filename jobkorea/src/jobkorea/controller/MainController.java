@@ -1,4 +1,3 @@
-
 package jobkorea.controller;
 
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ import jobkorea.model.dto.PostDto;
 import jobkorea.model.dto.EnterpriseDto;
 import jobkorea.model.dto.MemberDto;
 import jobkorea.model.dto.ReviewDto;
-import jobkorea.model.dao.MainDao;
 
 public class MainController {
 	// 싱글톤
@@ -32,9 +30,17 @@ public class MainController {
 	
 
 	// [1] 일반 회원가입 메소드
- 	public boolean mSignUp(MemberDto memberDto) {
-	      boolean result = MainDao.getinstance().mSignUp(memberDto);
-	      return result;
+ 	public int mSignUp(MemberDto memberDto) {
+ 		
+ 		if(memberDto.getMid().length() < 3 || memberDto.getMid().length() > 12 ) {
+ 			return 1;
+ 		}
+ 		if(memberDto.getMpwd().length() < 3 || memberDto.getMpwd().length() > 20) {
+ 			return 2;
+ 		}
+ 		
+	    boolean result = MainDao.getinstance().mSignUp(memberDto);
+	    return 0;
 	}
 	
     // * 로그인 번호 저장
@@ -60,9 +66,17 @@ public class MainController {
     ///////
     
     // [1] 기업 회원가입 메소드
-    public boolean eSignUp(EnterpriseDto enterpriseDto) {
-	      boolean result = MainDao.getinstance().eSignUp(enterpriseDto);
-	      return result;
+    public int eSignUp(EnterpriseDto enterpriseDto) {
+    	// 유효성 검사
+    	if(enterpriseDto.getEid().length() < 3 || enterpriseDto.getEid().length() > 12 ) {
+    		return 1;
+    	}
+    	if(enterpriseDto.getEpwd().length() < 3 || enterpriseDto.getEpwd().length() > 12) {
+    		return 2;
+    	}
+	    
+    	boolean result = MainDao.getinstance().eSignUp(enterpriseDto);
+	    return 0;
 	}
     
     // [2] 기업 회원 로그인 
@@ -98,4 +112,3 @@ public class MainController {
     	return result;
 	}
 }
-
