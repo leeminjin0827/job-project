@@ -25,6 +25,7 @@ public class PostController {
 		boolean state = false;
 		for( int i = 0 ; i <= array.size() - 1 ; i++ ) {
 			int arrays = array.get(i);
+			
 			if( arrays == postDto.getPno() ) {
 				state = true;
 				break;

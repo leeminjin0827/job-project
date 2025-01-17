@@ -35,14 +35,16 @@ public class ListView {
 		// 로그인된 기업번호 매개변수로 controller , dao 에 전달해 주세용. -> 로그인된 기업 공고만 나와야되니까!
 		ArrayList<Integer> array = new ArrayList<Integer>();
 		
+		System.out.println("====== 공고 리스트 ======");
 		for(int i = 0; i < pList.size(); i++) {
 			HashMap<String, String> pDto = pList.get(i);
 			array.add(Integer.parseInt(pDto.get("공고번호")));
 			System.out.println("\n공고번호 : " + pDto.get("공고번호") 
-			  +" \n공고명 : " + pDto.get("제목") +" 내용 : " + pDto.get("내용")
-			  +" \n경력 : " + pDto.get("경력") +" 모집인원 : " + pDto.get("인원")
-			  +" \n연봉 : " + pDto.get("연봉") +" 공고시작일 : " + pDto.get("공고시작일")
-			  +" \n공고종료일 : " + pDto.get("공고종료일") +" 카테고리 : " + pDto.get("카테고리명") + " 기업명 : " + pDto.get("기업명"));
+			  +" \n공고명 : " + pDto.get("제목") +"\n내용 : " + pDto.get("내용")
+			  +" \n경력 : " + pDto.get("경력") +"\n모집인원 : " + pDto.get("인원")
+			  +" \n연봉 : " + pDto.get("연봉") +"\n공고시작일 : " + pDto.get("공고시작일")
+			  +" \n공고종료일 : " + pDto.get("공고종료일") +"\n카테고리 : " + pDto.get("카테고리명") + "\n기업명 : " + pDto.get("기업명"));
+			System.out.println("======================");
 		}
 		return array;
 	}
@@ -52,11 +54,13 @@ public class ListView {
 		ArrayList<HashMap<String,String>> aList = ListController.getInstance().aList( loginEno);
 		ArrayList<Integer> array = new ArrayList<Integer>();
 		
+		System.out.println("====== 지원 리스트 ======");
 		for( int i = 0; i <= aList.size() -1 ; i++) {
 			HashMap<String,String> map = aList.get(i);
 			array.add(Integer.parseInt(map.get("지원번호")));
-			System.out.printf("지원번호 : %s\n 공고제목 : %s\n 회원이름 : %s\n 합격여부 : %s \n" ,
-					map.get("지원번호") , map.get("공고번호") , map.get("회원번호") , map.get("apass") );
+			System.out.printf("지원번호 : " + map.get("지원번호") + "\n공고제목 : " + map.get("공고번호")
+					+ "\n회원이름 : " +map.get("회원번호")  + "\n합격여부 : " + map.get("apass")+" \n");
+			System.out.println("======================");
 		}
 		return array;
 	}

@@ -52,13 +52,15 @@ public class ApplyView {
 		ArrayList<HashMap<String, String>> pList = ApplyController.getInstance().pList(choose);
 		ArrayList<Integer> pno = new ArrayList<Integer>(); ////// 공고번호 여러 개 담는 거 해야돼에에에에
 		
+		System.out.println("====== 공고 리스트 ======");
 		for(int i = 0; i < pList.size(); i++) {
 			HashMap<String, String> pDto = pList.get(i);
 			System.out.println("공고번호 : " + pDto.get("공고번호") 
-							  +" \t 공고명 : " + pDto.get("제목") +" 내용 : " + pDto.get("내용")
-							  +" 경력 : " + pDto.get("경력") +" 모집인원 : " + pDto.get("인원")
-							  +" 연봉 : " + pDto.get("연봉") +" 공고시작일 : " + pDto.get("공고시작일")
-							  +" 공고종료일 : " + pDto.get("공고종료일") +" 카테고리 : " + pDto.get("카테고리명"));	
+							  +"\n공고명 : " + pDto.get("제목") +"\n내용 : " + pDto.get("내용")
+							  +"\n경력 : " + pDto.get("경력") +"\n모집인원 : " + pDto.get("인원")
+							  +"\n연봉 : " + pDto.get("연봉") +"\n공고시작일 : " + pDto.get("공고시작일")
+							  +"\n공고종료일 : " + pDto.get("공고종료일") +"\n카테고리 : " + pDto.get("카테고리명"));	
+			System.out.println("======================");
 		
 			try {
 				pno.add(Integer.parseInt(pDto.get("공고번호")));
@@ -74,7 +76,6 @@ public class ApplyView {
 		
 		boolean result = ApplyController.getInstance().applyC(choose , choose2 , loginMno, pno );
 		
-		// console 창에 뜬 공고에만 지원가능 해야함 !!! //////////
 		if(result == true) {
 			System.out.println(">> 지원 완료");
 
@@ -90,12 +91,13 @@ public class ApplyView {
 		// 유효성 검사를 위한 ArrayList
 		ArrayList<Integer> ano = new ArrayList<Integer>();
 		
-		System.out.println();
+
+		System.out.println("====== 지원현황 ======");
 		for(int i = 0; i < aList.size(); i++) {
 			HashMap<String, String> aDto = aList.get(i);
-			System.out.println("지원번호 : "+ aDto.get("지원번호") +" \t 공고명 : " + aDto.get("공고명") 
-								+ " 공고종료일 : " + aDto.get("공고종료일") + " 합격여부 : " + aDto.get("합격여부"));
-			
+			System.out.println("지원번호 : "+ aDto.get("지원번호") +"\n공고명 : " + aDto.get("공고명") 
+								+ "\n공고종료일 : " + aDto.get("공고종료일") + "\n합격여부 : " + aDto.get("합격여부"));
+			System.out.println("===================");
 			// Integer 타입에 담기 위해 형 변환 -> 변환 오류 시 예외처리
 			try {
 				ano.add(Integer.parseInt(aDto.get("지원번호")));
@@ -123,6 +125,7 @@ public class ApplyView {
 		}else if (gender == 1)  {
 			 mgender = true;
 		}
+		
 
 		System.out.print(">> 수정할 생년월일 : ");
 		String mdate = scan.next();

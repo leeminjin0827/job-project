@@ -62,7 +62,7 @@ create table post(
     pcount  varchar(20) not null,
     psalary varchar(20) not null,
     pstart datetime default now(),
-    pend datetime not null,
+    pend varchar(30) not null,
     cno int unsigned,
     eno int unsigned,
     constraint primary key (pno),
