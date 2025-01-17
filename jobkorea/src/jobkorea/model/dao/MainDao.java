@@ -33,7 +33,7 @@ public class MainDao {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		// 2) 설정한 경로 / 계정 / 비밀번호로 DB 서버 연동 시도 후 결과(구현체) 반환  
 		conn = DriverManager.getConnection(dburl,dbuser,dbpwd);
-		System.out.println(">> DB 연동 성공");
+		
 		}catch (Exception e) {
 		System.out.println(">> DB 연동 실패 "+ e);
 		} // catch end

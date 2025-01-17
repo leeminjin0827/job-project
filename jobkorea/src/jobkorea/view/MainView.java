@@ -41,7 +41,7 @@ public class MainView {
 
 			if(choose == 1) {
 			
-				System.out.println(">> 1. 일반회원가입 2. 일반로그인 3. 메인페이지");
+				System.out.println(">> 1. 일반회원가입 2. 일반로그인 3. 돌아가기");
 				int choose2 = scan.nextInt();
 				
 				if(choose2 == 1) {
@@ -54,7 +54,7 @@ public class MainView {
 				}
 				
 			}else if(choose == 2) {
-				System.out.println(">> 1. 기업회원가입 2. 기업 로그인 3. 메인페이지");
+				System.out.println(">> 1. 기업회원가입 2. 기업 로그인 3. 돌아가기");
 				
 				int choose3 = scan.nextInt();
 				
@@ -67,7 +67,7 @@ public class MainView {
 					}
 				}
 			}else if(choose == 3) {
-				System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
+				System.out.println(">> 1. 우수기업 2. 기업후기 3. 돌아가기");
 				int choose4 = scan.nextInt();
 				
 				if(choose4 == 1) {
@@ -212,12 +212,15 @@ public class MainView {
     	ArrayList<HashMap<String , String>> bList = MainController.getInstance().bestList();
     	
     	System.out.println("========= 우수기업리스트 =========");
-    	System.out.println();
+    	
     	for(int i = 0; i < bList.size() ; i++) {
     		HashMap<String, String> bDto = bList.get(i);
-    		System.out.println("기업명 : " + bDto.get("기업명") + "\t 별점 : " + bDto.get("별점"));
+    		int count = i + 1;
+    		System.out.println(count +"위 기업명 : " + bDto.get("기업명") + "\n별점 : " + bDto.get("별점"));
+        	System.out.println("=============================");
     	}
-    	System.out.println();
+
+    
 	}
     
     // [2] 후기 R
@@ -228,14 +231,16 @@ public class MainView {
     	ArrayList<HashMap<String , String>> rList = MainController.getInstance().reviewList(ename);
     	
     	boolean state = false;
-    	System.out.println();
+
+    	System.out.println("====== 기업 후기 ======");
     	for(int i = 0; i < rList.size() ; i++) {
     		HashMap<String, String> rDto = rList.get(i);
-    		System.out.println("기업명 : " +rDto.get("기업명") + "\t 후기 : " + rDto.get("후기") + "\t 별점 : " + rDto.get("별점"));
+    		System.out.println("기업명 : " +rDto.get("기업명") + "\n후기 : " + rDto.get("후기") + "\n별점 : " + rDto.get("별점"));
     		state = true;
     	}
-    	
-    	if(state == false) {
+		System.out.println("====================");
+
+		if(state == false) {
     		System.out.println(">> 해당 기업의 후기가 존재하지 않습니다.");
     	}
     	System.out.println();
