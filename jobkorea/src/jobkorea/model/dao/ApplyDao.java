@@ -48,8 +48,8 @@ public class ApplyDao {
 		ArrayList<HashMap<String, String>> pList = new ArrayList<>();
 		
 		try {
-			String sql = "select p.pno , p.ptitle , p.pcontent ,p.phistory , p.pcount , p.psalary , p.pstart , p.pend , c.cname "
-					   + "from post p join category c on p.cno = c.cno where p.cno = ?";
+			String sql = "select p.pno , p.ptitle , p.pcontent ,p.phistory , p.pcount , p.psalary , p.pstart , p.pend , c.cname, e.ename "
+					   + "from post p join category c on p.cno = c.cno join enterprise e on p.eno = e.eno where p.cno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, choose);
 			
@@ -65,6 +65,7 @@ public class ApplyDao {
 				String pstart = rs.getString("pstart");
 				String pend = rs.getString("pend");
 				String cname = rs.getString("cname");
+				String ename = rs.getString("ename");
 				
 				HashMap<String, String> map = new HashMap<String, String>();
 				
@@ -77,6 +78,7 @@ public class ApplyDao {
 				map.put("공고시작일",pstart );
 				map.put("공고종료일", pend);
 				map.put("카테고리명", cname);
+				map.put("기업명", ename);
 			
 				pList.add(map);
 			}
