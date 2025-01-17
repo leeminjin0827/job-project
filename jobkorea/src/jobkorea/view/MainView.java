@@ -157,8 +157,10 @@ public class MainView {
 		System.out.println("===== 기업 회원가입 =====");
 		System.out.print("아이디 : ");		String eid = scan.next();
 		System.out.print("비밀번호 : ");	String epwd = scan.next();
-		System.out.print("기업명 : ");		String ename = scan.next();
-		System.out.print("주소 : ");		String eaddr = scan.next();
+		scan.nextLine();
+		System.out.print("기업명 : ");		String ename = scan.nextLine();
+		
+		System.out.print("주소 : ");		String eaddr = scan.nextLine();
 		
 		EnterpriseDto enterpriseDto = new EnterpriseDto();
 		enterpriseDto.setEid(eid);
