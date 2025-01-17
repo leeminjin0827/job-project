@@ -41,7 +41,7 @@ public class MainView {
 
 			if(choose == 1) {
 			
-				System.out.println(">> 1. 일반회원가입 2. 일반로그인 3. 돌아가기");
+				System.out.println(">> 1.일반회원가입 2.일반로그인 3.돌아가기");
 				int choose2 = scan.nextInt();
 				
 				if(choose2 == 1) {
@@ -54,7 +54,7 @@ public class MainView {
 				}
 				
 			}else if(choose == 2) {
-				System.out.println(">> 1. 기업회원가입 2. 기업 로그인 3. 돌아가기");
+				System.out.println(">> 1.기업회원가입 2.기업로그인 3.돌아가기");
 				
 				int choose3 = scan.nextInt();
 				
@@ -67,7 +67,7 @@ public class MainView {
 					}
 				}
 			}else if(choose == 3) {
-				System.out.println(">> 1. 우수기업 2. 기업후기 3. 돌아가기");
+				System.out.println(">> 1.우수기업 2.기업후기 3.돌아가기");
 				int choose4 = scan.nextInt();
 				
 				if(choose4 == 1) {
@@ -216,8 +216,8 @@ public class MainView {
     	for(int i = 0; i < bList.size() ; i++) {
     		HashMap<String, String> bDto = bList.get(i);
     		int count = i + 1;
-    		System.out.println(count +"위 기업명 : " + bDto.get("기업명") + "\n별점 : " + bDto.get("별점"));
-        	System.out.println("=============================");
+    		System.out.println(count +"위 기업명 : " + bDto.get("기업명") + "\n평점 : " + bDto.get("별점"));
+        	System.out.println("----------------------------");
     	}
 
     
@@ -235,10 +235,10 @@ public class MainView {
     	System.out.println("====== 기업 후기 ======");
     	for(int i = 0; i < rList.size() ; i++) {
     		HashMap<String, String> rDto = rList.get(i);
-    		System.out.println("기업명 : " +rDto.get("기업명") + "\n후기 : " + rDto.get("후기") + "\n별점 : " + rDto.get("별점"));
+    		System.out.println("기업명 : " +rDto.get("기업명") + "\n후기 : " + rDto.get("후기") + "\n평점 : " + rDto.get("별점"));
     		state = true;
     	}
-		System.out.println("====================");
+		System.out.println("----------------------");
 
 		if(state == false) {
     		System.out.println(">> 해당 기업의 후기가 존재하지 않습니다.");

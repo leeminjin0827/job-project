@@ -121,7 +121,3 @@ insert into review( rrating , rcontent , pno , mno ) values ( '2' , '가지마�
 insert into review( rrating , rcontent , pno , mno ) values ( '2' , '비추합니다.' , '1' , '3' );
 insert into review( rrating , rcontent , pno , mno ) values ( '5' , '좋아요.' , '2' , '3' );
 	-- eno -변경-> pno
-
-select * from review;
--- ******* DML ******* --
--- 우수 기업 리스트 sample --

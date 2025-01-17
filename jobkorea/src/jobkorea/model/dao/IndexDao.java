@@ -34,7 +34,7 @@ public class IndexDao {
 	// 내정보
 	public MemberDto myInfo(int loginMno) {
 		try {
-			String sql = "select mid, mpwd , mname , mgender, mdate, maddr from member where mno = ?";
+			String sql = "select mid , mname , mgender, mdate, maddr from member where mno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, loginMno);
 			ResultSet rs = ps.executeQuery();
@@ -42,7 +42,6 @@ public class IndexDao {
 			if(rs.next()) {
 				MemberDto memberDto = new MemberDto();
 				memberDto.setMid(rs.getString("mid"));
-				memberDto.setMpwd(rs.getString("mpwd"));
 				memberDto.setMname(rs.getString("mname"));
 				memberDto.setMgender(rs.getBoolean("mgender"));
 				memberDto.setMdate(rs.getString("mdate"));

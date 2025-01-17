@@ -25,7 +25,7 @@ public class ApplyView {
 	// 메인 
 	public void apply(int loginMno) {
 		while(true) {
-			System.out.println(">> 1. 지원하기 2. 지원현황 3. 정보수정 4. 지원삭제 5. 돌아가기");
+			System.out.println(">> 1.지원하기 2.지원현황 3.정보수정 4.지원삭제 5.돌아가기");
 			int choose = scan.nextInt();
 			
 			if(choose == 1) {
@@ -46,7 +46,7 @@ public class ApplyView {
 
 	// [1] 지원
 	public void applyC(int loginMno) {
-		System.out.println(">> 지원할 카테고리 번호 : ");
+		System.out.print(">> 지원할 카테고리 번호 : ");
 		int choose = scan.nextInt();
 		
 		ArrayList<HashMap<String, String>> pList = ApplyController.getInstance().pList(choose);
@@ -55,12 +55,13 @@ public class ApplyView {
 		System.out.println("====== 공고 리스트 ======");
 		for(int i = 0; i < pList.size(); i++) {
 			HashMap<String, String> pDto = pList.get(i);
-			System.out.println("공고번호 : " + pDto.get("공고번호") 
+			System.out.println("공고번호 : " + pDto.get("공고번호")
+							+"\n기업명 : " + pDto.get("기업명")
 							  +"\n공고명 : " + pDto.get("제목") +"\n내용 : " + pDto.get("내용")
 							  +"\n경력 : " + pDto.get("경력") +"\n모집인원 : " + pDto.get("인원")
 							  +"\n연봉 : " + pDto.get("연봉") +"\n공고시작일 : " + pDto.get("공고시작일")
 							  +"\n공고종료일 : " + pDto.get("공고종료일") +"\n카테고리 : " + pDto.get("카테고리명"));	
-			System.out.println("======================");
+			System.out.println("----------------------");
 		
 			try {
 				pno.add(Integer.parseInt(pDto.get("공고번호")));
@@ -71,7 +72,7 @@ public class ApplyView {
 		System.out.println();
 
 		
-		System.out.print(">> 지원할 공고 번호 : ");
+		System.out.print(">> 0.돌아가기 \n>> 지원할 공고 번호 : ");
 		int choose2 = scan.nextInt();
 		
 		boolean result = ApplyController.getInstance().applyC(choose , choose2 , loginMno, pno );
@@ -97,7 +98,7 @@ public class ApplyView {
 			HashMap<String, String> aDto = aList.get(i);
 			System.out.println("지원번호 : "+ aDto.get("지원번호") +"\n공고명 : " + aDto.get("공고명") 
 								+ "\n공고종료일 : " + aDto.get("공고종료일") + "\n합격여부 : " + aDto.get("합격여부"));
-			System.out.println("===================");
+			System.out.println("---------------------");
 			// Integer 타입에 담기 위해 형 변환 -> 변환 오류 시 예외처리
 			try {
 				ano.add(Integer.parseInt(aDto.get("지원번호")));
@@ -147,7 +148,7 @@ public class ApplyView {
 	// [4] 지원 삭제 
 		// 유효성 검사를 위해 지원번호를 매개 변수로 받음
 	public void applyD(ArrayList<Integer> ano) {
-		System.out.print(">> 취소할 지원번호 : ");
+		System.out.print(">> 0.돌아가기 \n>> 취소할 지원번호 : ");
 		int choose = scan.nextInt();
 		
 		boolean result = ApplyController.getInstance().applyD(choose, ano);

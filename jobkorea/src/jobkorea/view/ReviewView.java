@@ -19,7 +19,7 @@ public class ReviewView {
    public void run(int loginMno) {
       while(true) {
          System.out.println("===== 후기 시작 페이지 =====");
-         System.out.println("1.기업후기등록  2.기업후기출력  3.기업후기수정  4.기업후기삭제  5.돌아가기");
+         System.out.println("1.기업후기등록 2.기업후기출력 3.기업후기수정 4.기업후기삭제 5.돌아가기");
          int choose = scan.nextInt();
          if(choose == 1) {
                ArrayList<Integer> array = rPassPrint(loginMno);
@@ -46,9 +46,8 @@ public class ReviewView {
    
    // 후기 등록 페이지   
    public void rWrite(int loginMno, ArrayList<Integer> array) {
-      System.out.println("===== 후기 등록 =====");
-      System.out.print("작성할 공고번호 : "); int pno = scan.nextInt();
-      System.out.print("별점 : ");      int rrating = scan.nextInt();
+      System.out.print(">> 0.돌아가기 \n>> 작성할 공고번호 : "); int pno = scan.nextInt();
+      System.out.print("평점 : ");      int rrating = scan.nextInt();
       scan.nextLine(); // 엔터를 기준으로 넘어가던 설정 끊어주기
       System.out.print("내용 : ");      String rcontent = scan.nextLine(); // 엔터가 아닌 한 줄이 하나의 데이터임
       
@@ -58,21 +57,16 @@ public class ReviewView {
 
       
       if(result) {
-         System.out.println("[후기 등록 완료]");
+         System.out.println(">> 후기 등록 완료");
          return;
       }else {
-         System.out.println("[후기 등록 실패]");
+         System.out.println(">> 후기 등록 실패");
          return;
       } // if end
       
    } // f rWrite end
    
-   
-   // 로그인된 회원 이름 찾기
-   public void findMname() {
-      
-   }
-   
+  
    
    
    // 합격한 기업리스트
@@ -113,7 +107,7 @@ public class ReviewView {
          System.out.printf(
                         "후기번호 : " + i.get("후기번호") +"\n"+
                         "기업명 : " + i.get("기업명") +"\n"+
-                        "별점 : " + i.get("별점") +"\n"+
+                        "평점 : " + i.get("별점") +"\n"+
                         "후기내용 : " + i.get("후기내용") +"\n"+
                         "작성일자 : " + i.get("작성일자") +"\n"+
                         "------------------------\n"
@@ -128,8 +122,7 @@ public class ReviewView {
    
    // 후기 수정 페이지
    public void rUpdate(ArrayList<Integer> array) {
-      System.out.println("===== 후기 수정 =====");
-      System.out.print("수정할 후기 번호 : "); int rno = scan.nextInt();
+      System.out.print(">> 수정할 후기 번호 : "); int rno = scan.nextInt();
       System.out.print("별점 : ");      int rrating = scan.nextInt();
       scan.nextLine();
       System.out.print("후기내용 : ");   String rcontent = scan.nextLine();
@@ -139,10 +132,10 @@ public class ReviewView {
       boolean result = ReviewController.getInstance().rUpdate(reviewDto, rno, array);
       
       if(result) {
-         System.out.println("[후기 수정 완료]");
+         System.out.println(">> 후기 수정 완료");
       }
       else {
-         System.out.println("[후기 수정 실패]");
+         System.out.println(">> 해당 후기번호가 존재하지 않습니다.");
       } // if end
       
    } // f rUpdate end
@@ -152,14 +145,13 @@ public class ReviewView {
    
    // 후기 삭제 페이지
    public void rDelete(ArrayList<Integer> array) {
-      System.out.println("===== 후기 삭제 =====");
-      System.out.print("삭제할 후기 번호 : ");   int rno = scan.nextInt();
+      System.out.print(">> 0.돌아가기 \n>> 삭제할 후기 번호 : ");   int rno = scan.nextInt();
       ReviewDto reviewDto = new ReviewDto();
       reviewDto.setRno(rno);
       boolean result = ReviewController.getInstance().rDelete(reviewDto, array);
       
-      if(result) {System.out.println("[삭제 성공]");}
-      else {System.out.println("[삭제 실패]");
+      if(result) {System.out.println(">> 삭제 성공");}
+      else {System.out.println(">> 해당 후기번호가 존재하지 않습니다.");
       } // if end
    } // rDelete end
    
