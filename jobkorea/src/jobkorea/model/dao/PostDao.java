@@ -73,10 +73,6 @@ public class PostDao {
 			ps.setString( 5 , postDto.getPsalary() );
 			ps.setString( 6 , postDto.getPend() );
 			ps.setInt( 7 , postDto.getPno() );
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'master' of https://github.com/leeminjin0827/job-project
 			// 기재된 SQL를 실행하고 결과 받기
 			int count =  ps.executeUpdate();
 			// 결과에 따른 처리 및 반환을 한다.
