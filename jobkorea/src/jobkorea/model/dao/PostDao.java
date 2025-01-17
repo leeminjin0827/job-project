@@ -73,7 +73,6 @@ public class PostDao {
 			ps.setString( 5 , postDto.getPsalary() );
 			ps.setString( 6 , postDto.getPend() );
 			ps.setInt( 7 , postDto.getPno() );
-			System.out.println(ps);
 			// 기재된 SQL를 실행하고 결과 받기
 			int count =  ps.executeUpdate();
 			System.out.println(count);
@@ -92,10 +91,8 @@ public class PostDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// 기재된 SQL 에 매개 변수 값 대입
 			ps.setInt( 1 , pno );
-			System.out.println(pno);
 			// 기재된 SQL를 실행하고 결과 받기
 			int count = ps.executeUpdate();
-			System.out.println(count);
 			if( count == 1 ) { return true; }
 		}catch( SQLException e ) { System.out.println( e ); }
 		return false;
